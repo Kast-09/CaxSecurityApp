@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="combo_tipos">
+        <item> -- ELIJA OPCIÓN -- </item>
+        <item>Accidente de tránsito</item>
+        <item>Acoso sexual</item>
+        <item>Robo</item>
+        <item>Ruido excesivo</item>
+        <item>Vandalismo</item>
+        <item>Venta de droga</item>
+    </string-array>
+</resources>

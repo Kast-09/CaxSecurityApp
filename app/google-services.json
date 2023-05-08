@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "936886419268",
+    "project_id": "caxsecurity",
+    "storage_bucket": "caxsecurity.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:936886419268:android:9d25bfb7dacb0d50f76111",
+        "android_client_info": {
+          "package_name": "com.example.caxsecurityapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "936886419268-s3bmt5qqc4f7bce03opi317m2u8d9ki6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD0wFVmCaWbAYYfPXfPKv8n2rRx4PPsDlU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "936886419268-s3bmt5qqc4f7bce03opi317m2u8d9ki6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
