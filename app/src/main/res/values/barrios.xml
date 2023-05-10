@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="combo_barrios">
+        <item> -- ELIJA OPCIÓN -- </item>
+        <item>BARRIO 2 DE MAYO</item>
+        <item>BARRIO CHONTAPACCHA</item>
+        <item>BARRIO CUMBE MAYO</item>
+        <item>BARRIO EL ESTANCO</item>
+        <item>BARRIO LA COLMENA</item>
+        <item>BARRIO LA FLORIDA</item>
+        <item>BARRIO LA MERCED</item>
+        <item>BARRIO LUCMACUCHO</item>
+        <item>BARRIO MOLLEPAMPA</item>
+        <item>BARRIO NUEVO CAJAMARCA</item>
+        <item>BARRIO PUEBLO LIBRE</item>
+        <item>BARRIO PUEBLO NUEVO</item>
+        <item>BARRIO SAN ANTONIO</item>
+        <item>BARRIO SAN JOSÉ</item>
+        <item>BARRIO SAN MARTÍN</item>
+        <item>BARRIO SAN PEDRO</item>
+        <item>BARRIO SAN SEBASTIÁN</item>
+        <item>BARRIO SAN VICENTE</item>
+        <item>BARRIO SANTA APOLONIA</item>
+        <item>BARRIO SANTA ELENA</item>
+        <item>BARRIO URUBAMBA</item>
+        <item>BARRIO VICTOR RAÚL</item>
+    </string-array>
+</resources>

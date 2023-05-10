@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ReportesActivity">
+    tools:context=".IngresarCorreoRecuperacionActivity">
 
     <LinearLayout
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
         android:gravity="center_horizontal|center_vertical"
         android:orientation="vertical"
@@ -21,51 +21,62 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
+            android:gravity="center_horizontal|center_vertical"
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/tvTittleReporte"
+                android:id="@+id/tvTittleCorreoRecuperacion"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="REPORTES"
+                android:text="Correo de recuperación"
                 android:textAlignment="center"
                 android:textSize="34sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:gravity="center_horizontal|center_vertical"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvIngreseCorreo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:text="Ingrese su correo asociado a la cuenta:" />
+
+            <EditText
+                android:id="@+id/etCorreoRecuperacion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textEmailAddress" />
+
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:text="Se le enviara un código de verificación a su correo" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
             <Button
-                android:id="@+id/btnEnviarReporte"
-                android:layout_width="wrap_content"
+                android:id="@+id/btnVerificarCorreoRecuperacion"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:backgroundTint="#3F51B5"
-                android:onClick="enviarReporte"
-                android:text="Enviar Reporte"
-                app:icon="@drawable/enviarmensaje"
-                app:iconSize="100dp" />
+                android:backgroundTint="#4CAF50"
+                android:text="Enviar" />
+
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/button2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:backgroundTint="#FFC107"
-                android:onClick="verHistorialReportes"
-                android:text="Historial de Reportes"
-                app:icon="@drawable/historialreporte"
-                app:iconSize="100dp" />
-        </LinearLayout>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

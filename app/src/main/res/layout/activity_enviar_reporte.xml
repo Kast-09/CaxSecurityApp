@@ -7,8 +7,12 @@
     tools:context=".EnviarReporteActivity">
 
     <LinearLayout
-        android:layout_width="327dp"
-        android:layout_height="652dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="15dp"
+        android:gravity="center_horizontal|center_vertical"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -77,19 +81,22 @@
                 <RadioGroup
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1">
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="horizontal">
 
                     <RadioButton
                         android:id="@+id/rbReporteAnonimo"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:gravity="center_horizontal|center_vertical"
                         android:text="Reporte anónimo" />
 
                     <RadioButton
                         android:id="@+id/rbReportePublico"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Reporte público" />
+                        android:text="Reporte normal" />
                 </RadioGroup>
             </LinearLayout>
 
@@ -160,9 +167,40 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:ems="10"
-                    android:inputType="textPersonName"
-                    android:text="Ingrese descripción" />
+                    android:hint="Ingrese descripción"
+                    android:inputType="textPersonName" />
             </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tvBarrio"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Barrio:" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <Spinner
+                    android:id="@+id/spNombreBarrio"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+            </LinearLayout>
+
         </LinearLayout>
 
         <LinearLayout
@@ -194,8 +232,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:ems="10"
-                    android:inputType="textPersonName"
-                    android:text="Ingrese dirección" />
+                    android:hint="Ingrese dirección"
+                    android:inputType="textPersonName" />
             </LinearLayout>
         </LinearLayout>
 
@@ -228,8 +266,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:ems="10"
-                    android:inputType="textPersonName"
-                    android:text="Ingrese referencia" />
+                    android:hint="Ingrese referencia"
+                    android:inputType="textPersonName" />
             </LinearLayout>
         </LinearLayout>
 
@@ -262,8 +300,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:ems="10"
-                    android:inputType="textPersonName"
-                    android:text="Ingrese mensaje adicional" />
+                    android:hint="Ingrese mensaje adicional"
+                    android:inputType="textPersonName" />
             </LinearLayout>
         </LinearLayout>
 
@@ -307,6 +345,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:gravity="center_horizontal|center_vertical"
                     android:orientation="vertical">
 
                     <LinearLayout
