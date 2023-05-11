@@ -56,4 +56,14 @@ public class IniciarSesionActivity extends AppCompatActivity {
                     }
                 });
     }
+
+    public void irRegistro(View view){
+        Intent intent = new Intent(this, RegistrarseActivity.class);
+        startActivity(intent);
+    }
+
+    public void irOlvideContrasena(View view){
+        Intent intent = new Intent(this, IngresarCorreoRecuperacionActivity.class);
+        startActivity(intent);
+    }
 }

@@ -19,4 +19,9 @@ public class ReportesActivity extends AppCompatActivity {
         Intent intent = new Intent(getApplicationContext(), EnviarReporteActivity.class);
         startActivity(intent);
     }
+
+    public void verHistorialReportes(View view){
+        Intent intent = new Intent(getApplicationContext(), HistorialReportesActivity.class);
+        startActivity(intent);
+    }
 }

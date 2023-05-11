@@ -45,6 +45,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="#FF9800"
+                android:onClick="verMiPerfil"
                 android:text="MI PERFIL"
                 app:icon="@drawable/perfil"
                 app:iconSize="60dp" />
@@ -60,6 +61,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="#03A9F4"
+                android:onClick="verViewAmigos"
                 android:text="Amigos"
                 app:icon="@drawable/amigos"
                 app:iconSize="60dp" />
@@ -89,11 +91,12 @@
             android:orientation="vertical">
 
             <Button
-                android:id="@+id/btnSendLocation"
+                android:id="@+id/btnCompartirUbicacion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="#9C27B0"
-                android:text="Compartir mi Ubicación"
+                android:onClick="irViewCompartirMiUbicacion"
+                android:text="Compartir/Ver Ubicación Amigos"
                 app:icon="@drawable/compartirubicacion"
                 app:iconSize="60dp" />
         </LinearLayout>
@@ -109,6 +112,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:backgroundTint="#4CAF50"
+                android:onClick="verMapaCalor"
                 android:text="Mapa de calor"
                 app:icon="@drawable/mapa"
                 app:iconSize="60dp" />
@@ -124,6 +128,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:onClick="cerrarSesion"
                 android:text="Cerrar Sesión"
                 app:icon="@drawable/cerrrasesion"
                 app:iconSize="60dp" />

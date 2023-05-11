@@ -148,7 +148,7 @@
           android:layout_weight="1"
           android:ems="10"
           android:hint="Ingrese Correo"
-          android:inputType="textPersonName" />
+          android:inputType="textPersonName|textEmailSubject" />
     </LinearLayout>
 
     <LinearLayout
@@ -163,7 +163,7 @@
           android:layout_weight="1"
           android:ems="10"
           android:hint="Ingrese Contraseña"
-          android:inputType="textPassword" />
+          android:inputType="textVisiblePassword|textPassword" />
     </LinearLayout>
 
     <LinearLayout

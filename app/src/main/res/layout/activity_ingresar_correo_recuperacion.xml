@@ -70,11 +70,20 @@
             android:orientation="vertical">
 
             <Button
-                android:id="@+id/btnVerificarCorreoRecuperacion"
+                android:id="@+id/btnEnviarCodigoRecuperacion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="#4CAF50"
+                android:onClick="enviarCodigoRecuperacion"
                 android:text="Enviar" />
+
+            <Button
+                android:id="@+id/btnIrValidadCodigo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#2196F3"
+                android:onClick="irValidarCodigoRecuperacion"
+                android:text="Tengo el código de recuperación" />
 
         </LinearLayout>
 

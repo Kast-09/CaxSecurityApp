@@ -2,7 +2,9 @@ package com.example.caxsecurityapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ArrayAdapter;
@@ -15,11 +17,6 @@ public class EnviarReporteActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        /*requestWindowFeature(Window.FEATURE_NO_TITLE);
-        getWindow().setFlags(
-                WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN
-        );*/
         setContentView(R.layout.activity_enviar_reporte);
 
         spTipoReporte = findViewById(R.id.spTipoReporte);
@@ -32,5 +29,10 @@ public class EnviarReporteActivity extends AppCompatActivity {
         ArrayAdapter<CharSequence> adapterspNombreBarrio = ArrayAdapter.createFromResource(this,
                 R.array.combo_barrios, android.R.layout.simple_spinner_dropdown_item);
         spNombreBarrio.setAdapter(adapterspNombreBarrio);
+    }
+
+    public void enviarReporte(View view){
+        Intent intent = new Intent(getApplicationContext(), HistorialReportesActivity.class);
+        startActivity(intent);
     }
 }

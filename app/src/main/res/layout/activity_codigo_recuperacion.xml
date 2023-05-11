@@ -79,15 +79,9 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:backgroundTint="#4CAF50"
+                android:onClick="irRestablecerContrasena"
                 android:text="Validar" />
 
-            <Button
-                android:id="@+id/btnReenviarCodigo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:backgroundTint="#FF9800"
-                android:text="Reenviar código" />
         </LinearLayout>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

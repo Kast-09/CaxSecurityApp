@@ -14,8 +14,33 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
     }
 
+    public void verMiPerfil(View view){
+        Intent intent = new Intent(getApplicationContext(), MiPerfilActivity.class);
+        startActivity(intent);
+    }
+
+    public void verViewAmigos(View view){
+        Intent intent = new Intent(getApplicationContext(), AmigosActivity.class);
+        startActivity(intent);
+    }
+
     public void irReportes(View view){
         Intent intent = new Intent(getApplicationContext(), ReportesActivity.class);
+        startActivity(intent);
+    }
+
+    public void irViewCompartirMiUbicacion(View view){
+        Intent intent = new Intent(getApplicationContext(), CompartirUbicacionActivity.class);
+        startActivity(intent);
+    }
+
+    public void verMapaCalor(View view){
+        Intent intent = new Intent(getApplicationContext(), MapaDeCalorActivity.class);
+        startActivity(intent);
+    }
+
+    public void cerrarSesion(View view){
+        Intent intent = new Intent(getApplicationContext(), IniciarSesionActivity.class);
         startActivity(intent);
     }
 }

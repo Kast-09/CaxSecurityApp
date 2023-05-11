@@ -105,6 +105,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:backgroundTint="#03A9F4"
+                android:onClick="irRegistro"
                 android:text="Registrarse" />
         </LinearLayout>
 
@@ -118,6 +119,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:onClick="irOlvideContrasena"
                 android:text="Olvide mi contraseña"
                 android:textAlignment="center"
                 android:textAllCaps="false"

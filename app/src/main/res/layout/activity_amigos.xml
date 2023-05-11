@@ -51,7 +51,9 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:backgroundTint="#03A9F4"
+                    android:onClick="verMisAmigos"
                     android:text="Ver Amigos"
+                    android:textSize="14sp"
                     app:icon="@drawable/amigos"
                     app:iconSize="60dp" />
             </LinearLayout>
@@ -67,6 +69,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:backgroundTint="#009688"
+                    android:onClick="verSolicitudesAmistad"
                     android:text="Ver Solicitudes de Amistad"
                     app:icon="@drawable/versolicitudamistad"
                     app:iconSize="60dp" />
@@ -83,6 +86,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:backgroundTint="#FF5722"
+                    android:onClick="enviarSolicitudAmistad"
                     android:text="Enviar Solicitd de Amistad"
                     app:icon="@drawable/anadiramigo"
                     app:iconSize="60dp" />
