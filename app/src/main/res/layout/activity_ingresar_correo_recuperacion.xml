@@ -21,69 +21,69 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="wrap_content"
             android:gravity="center_horizontal|center_vertical"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:padding="10dp">
 
             <TextView
                 android:id="@+id/tvTittleCorreoRecuperacion"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Correo de recuperación"
+                android:fontFamily="@font/robotocondensed_regular"
+                android:text="Recuperar Contraseña"
                 android:textAlignment="center"
-                android:textSize="34sp" />
+                android:textSize="40sp" />
 
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="120dp"
-            android:gravity="center_horizontal|center_vertical"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/tvIngreseCorreo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:text="Ingrese su correo asociado a la cuenta:" />
-
-            <EditText
-                android:id="@+id/etCorreoRecuperacion"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="textEmailAddress" />
-
-            <TextView
-                android:id="@+id/textView9"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:text="Se le enviara un código de verificación a su correo" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:gravity="center_horizontal|center_vertical"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <TextView
+                android:id="@+id/tvIngreseCorreo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/robotocondensed_regular"
+                android:gravity="center_vertical"
+                android:text="Ingrese su correo asociado a la cuenta:"
+                android:textSize="20sp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="15dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tilCorreoRecuperacionET"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/robotocondensed_regular"
+                    android:hint="Correo"
+                    android:textSize="20sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="10dp">
 
             <Button
                 android:id="@+id/btnEnviarCodigoRecuperacion"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:backgroundTint="#4CAF50"
+                android:layout_height="65dp"
+                android:backgroundTint="#C32525"
                 android:onClick="enviarCodigoRecuperacion"
-                android:text="Enviar" />
-
-            <Button
-                android:id="@+id/btnIrValidadCodigo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:backgroundTint="#2196F3"
-                android:onClick="irValidarCodigoRecuperacion"
-                android:text="Tengo el código de recuperación" />
+                android:text="Enviar"
+                android:textSize="20sp" />
 
         </LinearLayout>
 

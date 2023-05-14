@@ -8,5 +8,6 @@
         <item>Ruido excesivo</item>
         <item>Vandalismo</item>
         <item>Venta de droga</item>
+        <item>Otro</item>
     </string-array>
 </resources>

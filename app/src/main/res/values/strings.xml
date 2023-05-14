@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">CaxSecurity</string>
+    <string name="invalid_mail">Ingrese correo valido</string>
+    <string name="invalid_password">Ingrese contraseña mayor a 6 dígitos</string>
 </resources>

@@ -22,13 +22,15 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:padding="30dp">
 
             <TextView
                 android:id="@+id/tvBienvenida"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:fontFamily="@font/robotocondensed_regular"
                 android:text="Bienvenido"
                 android:textAlignment="center"
                 android:textSize="60sp" />
@@ -38,100 +40,89 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="10dp">
 
             <Button
                 android:id="@+id/btnVerPerfil"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="#FF9800"
+                android:fontFamily="@font/robotocondensed_regular"
                 android:onClick="verMiPerfil"
+                android:padding="10dp"
                 android:text="MI PERFIL"
+                android:textSize="20sp"
                 app:icon="@drawable/perfil"
                 app:iconSize="60dp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
 
             <Button
                 android:id="@+id/btnVerAmigos"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="#03A9F4"
+                android:fontFamily="@font/robotocondensed_regular"
                 android:onClick="verViewAmigos"
+                android:padding="10dp"
                 android:text="Amigos"
+                android:textSize="20sp"
                 app:icon="@drawable/amigos"
                 app:iconSize="60dp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
 
             <Button
                 android:id="@+id/btnReport"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="#3F51B5"
+                android:fontFamily="@font/robotocondensed_regular"
                 android:onClick="irReportes"
+                android:padding="10dp"
                 android:text="Reportes"
+                android:textSize="20sp"
                 app:icon="@drawable/reportes"
                 app:iconGravity="start"
                 app:iconSize="60dp" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
 
             <Button
                 android:id="@+id/btnCompartirUbicacion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="#9C27B0"
+                android:fontFamily="@font/robotocondensed_regular"
                 android:onClick="irViewCompartirMiUbicacion"
+                android:padding="10dp"
                 android:text="Compartir/Ver Ubicación Amigos"
+                android:textSize="20sp"
                 app:icon="@drawable/compartirubicacion"
                 app:iconSize="60dp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
 
             <Button
                 android:id="@+id/btnMapaCalor"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:backgroundTint="#4CAF50"
+                android:fontFamily="@font/robotocondensed_regular"
                 android:onClick="verMapaCalor"
+                android:padding="10dp"
                 android:text="Mapa de calor"
+                android:textSize="20sp"
                 app:icon="@drawable/mapa"
                 app:iconSize="60dp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
 
             <Button
                 android:id="@+id/btnLogout"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:fontFamily="@font/robotocondensed_regular"
                 android:onClick="cerrarSesion"
+                android:padding="10dp"
                 android:text="Cerrar Sesión"
+                android:textSize="20sp"
                 app:icon="@drawable/cerrrasesion"
                 app:iconSize="60dp" />
         </LinearLayout>
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
