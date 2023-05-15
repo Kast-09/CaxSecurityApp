@@ -16,6 +16,7 @@ import com.basgeekball.awesomevalidation.AwesomeValidation;
 import com.basgeekball.awesomevalidation.ValidationStyle;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthException;
@@ -25,8 +26,7 @@ public class RegistrarseActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
     AwesomeValidation awesomeValidation;
-
-    private EditText etCorreoRegistro, etPasswordRegistro, etPasswordRegistro2;
+    private TextInputEditText tieCorreoRegistro, tieContrasenaRegistro, tieContrasenaVerificarRegistro;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,12 +35,13 @@ public class RegistrarseActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
         awesomeValidation = new AwesomeValidation(ValidationStyle.BASIC);
-        awesomeValidation.addValidation(this, R.id.etCorreoRegistro, Patterns.EMAIL_ADDRESS, R.string.invalid_mail);
-        awesomeValidation.addValidation(this, R.id.etPasswordRegistro, ".{6,}", R.string.invalid_password);
+        awesomeValidation.addValidation(this, R.id.tieCorreoRegistro, Patterns.EMAIL_ADDRESS, R.string.invalid_mail);
+        awesomeValidation.addValidation(this, R.id.tieContrasenaRegistro, ".{6,}", R.string.invalid_password);
+        awesomeValidation.addValidation(this, R.id.tieContrasenaVerificarRegistro, ".{6,}", R.string.invalid_password);
 
-        etCorreoRegistro = findViewById(R.id.etCorreoRegistro);
-        etPasswordRegistro = findViewById(R.id.etPasswordRegistro);
-        etPasswordRegistro2 = findViewById(R.id.etPasswordRegistro2);
+        tieCorreoRegistro = findViewById(R.id.tieCorreoRegistro);
+        tieContrasenaRegistro = findViewById(R.id.tieContrasenaRegistro);
+        tieContrasenaVerificarRegistro = findViewById(R.id.tieContrasenaVerificarRegistro);
     }
 
     public void onStart(){
@@ -50,26 +51,31 @@ public class RegistrarseActivity extends AppCompatActivity {
     }
 
     public void registrarUsuario(View view){
-        String correo = etCorreoRegistro.getText().toString();
-        String contrasena = etPasswordRegistro.getText().toString();
-        String contrasenaValidar = etPasswordRegistro2.getText().toString();
+        String correo = tieCorreoRegistro.getText().toString();
+        String contrasena = tieContrasenaRegistro.getText().toString();
+        String contrasenaValidar = tieContrasenaVerificarRegistro.getText().toString();
 
         if(awesomeValidation.validate()){
-            mAuth.createUserWithEmailAndPassword(correo, contrasena).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                @Override
-                public void onComplete(@NonNull Task<AuthResult> task) {
-                    if(task.isSuccessful()){
-                        Toast.makeText(getApplicationContext(), "Registro Exitoso", Toast.LENGTH_SHORT).show();
-                        finish();
+            if(contrasena.trim().equals(contrasenaValidar.trim())){
+                mAuth.createUserWithEmailAndPassword(correo, contrasena).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if(task.isSuccessful()){
+                            Intent intent = new Intent(getApplicationContext(), IniciarSesionActivity.class);
+                            Toast.makeText(getApplicationContext(), "Registro Exitoso", Toast.LENGTH_SHORT).show();
+                            finish();
+                            startActivity(intent);
+                        }
+                        else{
+                            String errorCode = ((FirebaseAuthException) task.getException()).getErrorCode();
+                            dameToastdeerror(errorCode);
+                        }
                     }
-                    else{
-                        String errorCode = ((FirebaseAuthException) task.getException()).getErrorCode();
-                        dameToastdeerror(errorCode);
-                        //Toast.makeText(getApplicationContext(), "Error al Registrar", Toast.LENGTH_SHORT).show();
-                        //updateUI(null);
-                    }
-                }
-            });
+                });
+            }
+            else {
+                Toast.makeText(this, "Las Contraseñas no coinciden", Toast.LENGTH_SHORT).show();
+            }
         }
         else {
             Toast.makeText(this, "Completa los campos de manera correcta", Toast.LENGTH_SHORT).show();
@@ -119,15 +125,15 @@ public class RegistrarseActivity extends AppCompatActivity {
 
             case "ERROR_INVALID_EMAIL":
                 Toast.makeText(RegistrarseActivity.this, "La dirección de correo electrónico está mal formateada.", Toast.LENGTH_LONG).show();
-                etCorreoRegistro.setError("La dirección de correo electrónico está mal formateada.");
-                etCorreoRegistro.requestFocus();
+                tieCorreoRegistro.setError("La dirección de correo electrónico está mal formateada.");
+                tieCorreoRegistro.requestFocus();
                 break;
 
             case "ERROR_WRONG_PASSWORD":
                 Toast.makeText(RegistrarseActivity.this, "La contraseña no es válida o el usuario no tiene contraseña.", Toast.LENGTH_LONG).show();
-                etPasswordRegistro.setError("la contraseña es incorrecta ");
-                etPasswordRegistro.requestFocus();
-                etPasswordRegistro.setText("");
+                tieContrasenaRegistro.setError("la contraseña es incorrecta ");
+                tieContrasenaRegistro.requestFocus();
+                tieContrasenaRegistro.setText("");
                 break;
 
             case "ERROR_USER_MISMATCH":
@@ -144,8 +150,8 @@ public class RegistrarseActivity extends AppCompatActivity {
 
             case "ERROR_EMAIL_ALREADY_IN_USE":
                 Toast.makeText(RegistrarseActivity.this, "La dirección de correo electrónico ya está siendo utilizada por otra cuenta..   ", Toast.LENGTH_LONG).show();
-                etCorreoRegistro.setError("La dirección de correo electrónico ya está siendo utilizada por otra cuenta.");
-                etCorreoRegistro.requestFocus();
+                tieCorreoRegistro.setError("La dirección de correo electrónico ya está siendo utilizada por otra cuenta.");
+                tieCorreoRegistro.requestFocus();
                 break;
 
             case "ERROR_CREDENTIAL_ALREADY_IN_USE":
@@ -174,8 +180,8 @@ public class RegistrarseActivity extends AppCompatActivity {
 
             case "ERROR_WEAK_PASSWORD":
                 Toast.makeText(RegistrarseActivity.this, "La contraseña proporcionada no es válida..", Toast.LENGTH_LONG).show();
-                etPasswordRegistro.setError("La contraseña no es válida, debe tener al menos 6 caracteres");
-                etPasswordRegistro.requestFocus();
+                tieContrasenaRegistro.setError("La contraseña no es válida, debe tener al menos 6 caracteres");
+                tieContrasenaRegistro.requestFocus();
                 break;
 
         }
