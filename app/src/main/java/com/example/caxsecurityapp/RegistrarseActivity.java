@@ -81,30 +81,6 @@ public class RegistrarseActivity extends AppCompatActivity {
             Toast.makeText(this, "Completa los campos de manera correcta", Toast.LENGTH_SHORT).show();
         }
 
-        /*if(etPasswordRegistro.getText().toString().trim().equals(etPasswordRegistro2.getText().toString().trim())){
-            mAuth.createUserWithEmailAndPassword(etCorreoRegistro.getText().toString().trim(), etPasswordRegistro.getText().toString().trim())
-                    .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                            if(task.isSuccessful()){
-                                FirebaseUser user = mAuth.getCurrentUser();
-                                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                                Toast.makeText(getApplicationContext(), "Registro Exitoso", Toast.LENGTH_SHORT).show();
-                                finish();
-                                startActivity(intent);
-                                //updateUI(user);
-                            }
-                            else{
-                                Toast.makeText(getApplicationContext(), "Error al Registrar", Toast.LENGTH_SHORT).show();
-                                //updateUI(null);
-                            }
-                        }
-                    });
-        }
-        else {
-            Toast.makeText(this, "Las Contraseñas no coinciden", Toast.LENGTH_SHORT).show();
-        }*/
-
     }
 
     private void dameToastdeerror(String error) {

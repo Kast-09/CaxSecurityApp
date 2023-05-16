@@ -67,7 +67,7 @@ public class IniciarSesionActivity extends AppCompatActivity {
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if(task.isSuccessful()){
                         FirebaseUser user = mAuth.getCurrentUser();
-                        Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                        Intent intent = new Intent(getApplicationContext(), InicioActivity.class);
                         Toast.makeText(getApplicationContext(), "Inicio de Sesión Exitoso", Toast.LENGTH_SHORT).show();
                         startActivity(intent);
                     }
@@ -91,7 +91,7 @@ public class IniciarSesionActivity extends AppCompatActivity {
     }
 
     public void irHome(){
-        Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+        Intent intent = new Intent(getApplicationContext(), InicioActivity.class);
         //intent.putExtra("correo", etCorreo.getText().toString());
         //intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
