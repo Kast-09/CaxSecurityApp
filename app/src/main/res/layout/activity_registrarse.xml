@@ -20,190 +20,202 @@
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-      <TextView
-          android:id="@+id/tvTittleRegister"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_weight="1"
-          android:fontFamily="@font/robotocondensed_regular"
-          android:padding="20dp"
-          android:text="REGISTRO"
-          android:textAlignment="center"
-          android:textSize="40sp" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="10dp">
+        android:layout_height="match_parent">
 
       <LinearLayout
           android:layout_width="match_parent"
-          android:layout_height="match_parent"
-          android:orientation="vertical">
-
-        <ImageView
-            android:id="@+id/ivFotoRegistro"
-            android:layout_width="match_parent"
-            android:layout_height="120dp"
-            app:srcCompat="@drawable/perfil" />
-      </LinearLayout>
-
-      <LinearLayout
-          android:layout_width="match_parent"
-          android:layout_height="match_parent"
-          android:orientation="horizontal"
-          android:padding="3dp">
-
-        <Button
-            android:id="@+id/btnTomarFotoRegistro"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:backgroundTint="#C32525"
-            android:fontFamily="@font/robotocondensed_regular"
-            android:text="Tomar Foto"
-            android:textSize="20sp" />
-
-        <Button
-            android:id="@+id/btnSubirFotoRegistro"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:backgroundTint="#F44336"
-            android:fontFamily="@font/robotocondensed_regular"
-            android:text="Subir Foto"
-            android:textSize="20sp" />
-      </LinearLayout>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="10dp">
-
-      <com.google.android.material.textfield.TextInputLayout
-          android:layout_width="match_parent"
-          android:layout_height="match_parent"
-          android:paddingTop="10dp">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/tieNombreRegistro"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/robotocondensed_regular"
-            android:hint="Nombre Completo"
-            android:inputType="textPersonName"
-            android:textSize="24sp" />
-      </com.google.android.material.textfield.TextInputLayout>
-
-      <com.google.android.material.textfield.TextInputLayout
-          android:layout_width="match_parent"
-          android:layout_height="match_parent"
-          android:paddingTop="10dp">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/tieNumeroTelefonoRegistro"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/robotocondensed_regular"
-            android:hint="Número de teléfono"
-            android:inputType="phone"
-            android:textSize="24sp" />
-      </com.google.android.material.textfield.TextInputLayout>
-
-      <com.google.android.material.textfield.TextInputLayout
-          android:layout_width="match_parent"
-          android:layout_height="match_parent"
-          android:paddingTop="10dp">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/tieDNIRegistro"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/robotocondensed_regular"
-            android:hint="Número de DNI"
-            android:inputType="phone"
-            android:textSize="24sp" />
-      </com.google.android.material.textfield.TextInputLayout>
-
-      <com.google.android.material.textfield.TextInputLayout
-          android:layout_width="match_parent"
-          android:layout_height="match_parent"
-          android:paddingTop="10dp">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/tieCorreoRegistro"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/robotocondensed_regular"
-            android:hint="Correo"
-            android:inputType="textEmailAddress"
-            android:textSize="24sp" />
-      </com.google.android.material.textfield.TextInputLayout>
-
-      <com.google.android.material.textfield.TextInputLayout
-          android:layout_width="match_parent"
-          android:layout_height="match_parent"
-          android:layout_weight="1"
-          android:paddingTop="10dp"
-          app:passwordToggleEnabled="true">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/tieContrasenaRegistro"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/robotocondensed_regular"
-            android:hint="Contraseña"
-            android:password="true"
-            android:singleLine="false"
-            android:textSize="24sp" />
-      </com.google.android.material.textfield.TextInputLayout>
-
-      <com.google.android.material.textfield.TextInputLayout
-          android:layout_width="match_parent"
-          android:layout_height="match_parent"
-          android:layout_weight="1"
-          android:paddingTop="10dp"
-          app:passwordToggleEnabled="true">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/tieContrasenaVerificarRegistro"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/robotocondensed_regular"
-            android:hint="Verifica contrasena"
-            android:password="true"
-            android:singleLine="false"
-            android:textSize="24sp" />
-      </com.google.android.material.textfield.TextInputLayout>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:orientation="horizontal">
-
-      <Button
-          android:id="@+id/btnRegistro"
-          android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          android:layout_weight="1"
-          android:backgroundTint="#C32525"
-          android:fontFamily="@font/robotocondensed_regular"
-          android:onClick="registrarUsuario"
-          android:padding="10dp"
-          android:text="Registrarse"
-          android:textSize="20sp" />
-    </LinearLayout>
+          android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+          <TextView
+              android:id="@+id/tvTittleRegister"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_weight="1"
+              android:fontFamily="@font/robotocondensed_regular"
+              android:padding="20dp"
+              android:text="REGISTRO"
+              android:textAlignment="center"
+              android:textSize="40sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+          <LinearLayout
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/ivFotoRegistro"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                app:srcCompat="@drawable/perfil" />
+          </LinearLayout>
+
+          <LinearLayout
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="horizontal"
+              android:padding="3dp">
+
+            <Button
+                android:id="@+id/btnTomarFotoRegistro"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:backgroundTint="#C32525"
+                android:fontFamily="@font/robotocondensed_regular"
+                android:text="Tomar Foto"
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/btnSubirFotoRegistro"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:backgroundTint="#F44336"
+                android:fontFamily="@font/robotocondensed_regular"
+                android:text="Subir Foto"
+                android:textSize="20sp" />
+          </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+          <com.google.android.material.textfield.TextInputLayout
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:paddingTop="10dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tieNombreRegistro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/robotocondensed_regular"
+                android:hint="Nombre Completo"
+                android:inputType="textPersonName"
+                android:textSize="24sp" />
+          </com.google.android.material.textfield.TextInputLayout>
+
+          <com.google.android.material.textfield.TextInputLayout
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:paddingTop="10dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tieNumeroTelefonoRegistro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/robotocondensed_regular"
+                android:hint="Número de teléfono"
+                android:inputType="phone"
+                android:textSize="24sp" />
+          </com.google.android.material.textfield.TextInputLayout>
+
+          <com.google.android.material.textfield.TextInputLayout
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:paddingTop="10dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tieDNIRegistro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/robotocondensed_regular"
+                android:hint="Número de DNI"
+                android:inputType="phone"
+                android:textSize="24sp" />
+          </com.google.android.material.textfield.TextInputLayout>
+
+          <com.google.android.material.textfield.TextInputLayout
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:paddingTop="10dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tieCorreoRegistro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/robotocondensed_regular"
+                android:hint="Correo"
+                android:inputType="textEmailAddress"
+                android:textSize="24sp" />
+          </com.google.android.material.textfield.TextInputLayout>
+
+          <com.google.android.material.textfield.TextInputLayout
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:layout_weight="1"
+              android:paddingTop="10dp"
+              app:passwordToggleEnabled="true">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tieContrasenaRegistro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/robotocondensed_regular"
+                android:hint="Contraseña"
+                android:password="true"
+                android:singleLine="false"
+                android:textSize="24sp" />
+          </com.google.android.material.textfield.TextInputLayout>
+
+          <com.google.android.material.textfield.TextInputLayout
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:layout_weight="1"
+              android:paddingTop="10dp"
+              app:passwordToggleEnabled="true">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tieContrasenaVerificarRegistro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/robotocondensed_regular"
+                android:hint="Verifica contrasena"
+                android:password="true"
+                android:singleLine="false"
+                android:textSize="24sp" />
+          </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:orientation="horizontal">
+
+          <Button
+              android:id="@+id/btnRegistro"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_weight="1"
+              android:backgroundTint="#C32525"
+              android:fontFamily="@font/robotocondensed_regular"
+              android:onClick="registrarUsuario"
+              android:padding="10dp"
+              android:text="Registrarse"
+              android:textSize="20sp" />
+        </LinearLayout>
+      </LinearLayout>
+    </ScrollView>
+
   </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

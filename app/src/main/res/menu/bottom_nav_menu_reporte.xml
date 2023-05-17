@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/enviar_reporte"
+        android:title="Enviar Reporte"
+        android:icon="@drawable/ic_enviar">
+    </item>
+
+    <item
+        android:id="@+id/ver_historial_reportes"
+        android:title="Historial Reportes"
+        android:icon="@drawable/ic_solicitudes_pendientes">
+    </item>
+</menu>

@@ -26,12 +26,12 @@ public class InicioActivity extends AppCompatActivity {
     }
 
     public void verViewAmigos(View view){
-        Intent intent = new Intent(getApplicationContext(), AmigosActivity.class);
+        Intent intent = new Intent(getApplicationContext(), NavigationViewAmigosActivity.class);
         startActivity(intent);
     }
 
     public void irReportes(View view){
-        Intent intent = new Intent(getApplicationContext(), ReportesActivity.class);
+        Intent intent = new Intent(getApplicationContext(), NavigationViewReportesActivity.class);
         startActivity(intent);
     }
 
