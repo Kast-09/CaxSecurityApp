@@ -2,6 +2,7 @@ package com.example.caxsecurityapp;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
@@ -16,26 +17,29 @@ public class EnviarReporteFragment extends Fragment {
     private Spinner spTipoReporte, spNombreBarrio;
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
+    public void onCreate(@NonNull Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.fragment_enviar_reporte, container, false);
+    }
 
-        /*spTipoReporte = getView().findViewById(R.id.spTipoReporte);
-        spNombreBarrio = getView().findViewById(R.id.spNombreBarrio);
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
 
-        ArrayAdapter<CharSequence> adapterspTipoReporte = ArrayAdapter.createFromResource(getActivity().getApplicationContext(),
+        spTipoReporte = view.findViewById(R.id.spTipoReporteFragment);
+        spNombreBarrio = view.findViewById(R.id.spNombreBarrioFragment);
+
+        ArrayAdapter<CharSequence> adapterspTipoReporte = ArrayAdapter.createFromResource(this.getContext(),
                 R.array.combo_tipos, android.R.layout.simple_spinner_dropdown_item);
         spTipoReporte.setAdapter(adapterspTipoReporte);
 
-        ArrayAdapter<CharSequence> adapterspNombreBarrio = ArrayAdapter.createFromResource(getActivity().getApplicationContext(),
+        ArrayAdapter<CharSequence> adapterspNombreBarrio = ArrayAdapter.createFromResource(this.getContext(),
                 R.array.combo_barrios, android.R.layout.simple_spinner_dropdown_item);
-        spNombreBarrio.setAdapter(adapterspNombreBarrio);*/
-
-        return inflater.inflate(R.layout.fragment_enviar_reporte, container, false);
+        spNombreBarrio.setAdapter(adapterspNombreBarrio);
     }
 }

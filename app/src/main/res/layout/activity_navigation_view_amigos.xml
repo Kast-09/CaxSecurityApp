@@ -7,10 +7,10 @@
     tools:context=".NavigationViewAmigosActivity">
 
     <FrameLayout
+        android:id="@+id/containerAmigos"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/containerAmigos"
-        android:layout_below="@+id/bottom_navigationAmigos"/>
+        android:layout_below="@+id/bottom_navigationAmigos" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigationAmigos"
