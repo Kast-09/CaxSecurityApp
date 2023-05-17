@@ -22,7 +22,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="wrap_content"
             android:gravity="center_horizontal|center_vertical"
             android:orientation="horizontal">
 
@@ -31,16 +31,20 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:fontFamily="@font/robotocondensed_regular"
                 android:gravity="center_horizontal|center_vertical"
+                android:padding="15dp"
                 android:text="Mi perfil"
                 android:textAlignment="center"
-                android:textSize="34sp" />
+                android:textSize="40sp" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:gravity="center_horizontal|center_vertical"
+            android:orientation="vertical"
+            android:padding="15dp">
 
             <LinearLayout
                 android:layout_width="160dp"
@@ -49,152 +53,128 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:id="@+id/imageView"
+                    android:id="@+id/ivFotoPerfil"
                     android:layout_width="120dp"
                     android:layout_height="120dp"
                     android:layout_weight="1"
-                    tools:srcCompat="@tools:sample/avatars" />
+                    tools:srcCompat="@drawable/ic_usuario_color" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="130dp"
+                android:layout_height="wrap_content"
                 android:gravity="center_horizontal|center_vertical"
-                android:orientation="vertical">
+                android:orientation="horizontal">
 
-                <LinearLayout
+                <Button
+                    android:id="@+id/btnTomarFoto"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:backgroundTint="#C32525"
+                    android:fontFamily="@font/robotocondensed_regular"
+                    android:text="Tomar Foto"
+                    android:textSize="20sp" />
+
+                <Button
+                    android:id="@+id/brnSeleccionarFoto"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#F44336"
+                    android:fontFamily="@font/robotocondensed_regular"
+                    android:text="Seleccionar Foto"
+                    android:textSize="20sp" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tilPefilNombre"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center_horizontal|center_vertical"
-                    android:orientation="horizontal">
+                    android:fontFamily="@font/robotocondensed_regular"
+                    android:hint="Nombre Usuario"
+                    android:textSize="20sp" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-                    <Button
-                        android:id="@+id/btnTomarFoto"
-                        android:layout_width="200dp"
-                        android:layout_height="wrap_content"
-                        android:backgroundTint="#2196F3"
-                        android:text="Tomar Foto" />
-                </LinearLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="10dp">
 
-                <LinearLayout
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tilDNI"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center_horizontal|center_vertical"
-                    android:orientation="horizontal">
+                    android:fontFamily="@font/robotocondensed_regular"
+                    android:hint="Número de DNI"
+                    android:textSize="20sp" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-                    <Button
-                        android:id="@+id/brnSeleccionarFoto"
-                        android:layout_width="200dp"
-                        android:layout_height="wrap_content"
-                        android:backgroundTint="#3F51B5"
-                        android:text="Seleccionar Foto" />
-                </LinearLayout>
-
-            </LinearLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <EditText
-                android:id="@+id/etPerfilNombre"
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Ingrese Nombre"
-                android:inputType="textPersonName" />
+                android:layout_height="match_parent"
+                android:paddingTop="10dp">
 
-            <EditText
-                android:id="@+id/etPerfilFechaNacimiento"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Ingrese fecha de nacimiento"
-                android:inputType="date" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/robotocondensed_regular"
+                    android:hint="Número de teléfono"
+                    android:textSize="20sp" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <EditText
-                android:id="@+id/etPerfilNumeroTelefono"
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Ingrese número de teléfono"
-                android:inputType="phone" />
+                android:layout_height="match_parent"
+                android:paddingTop="10dp">
 
-            <EditText
-                android:id="@+id/etPerfilCorreo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Ingrese correo"
-                android:inputType="textEmailAddress" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/robotocondensed_regular"
+                    android:hint="Correo"
+                    android:textSize="20sp" />
+            </com.google.android.material.textfield.TextInputLayout>
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="vertical"
+            android:padding="10dp">
 
-            <LinearLayout
+            <Button
+                android:id="@+id/btnActualizarContrasena"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:backgroundTint="#C32525"
+                android:fontFamily="@font/robotocondensed_regular"
                 android:gravity="center_horizontal|center_vertical"
-                android:orientation="vertical">
+                android:onClick="irActualizarContrasena"
+                android:text="Actualizar Contraseña"
+                android:textSize="20sp" />
 
-                <Button
-                    android:id="@+id/btnActualizarContrasena"
-                    android:layout_width="300dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:backgroundTint="#FF9800"
-                    android:gravity="center_horizontal|center_vertical"
-                    android:onClick="irActualizarContrasena"
-                    android:text="Actualizar Contraseña" />
-            </LinearLayout>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal|center_vertical"
-            android:orientation="horizontal">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+            <Button
+                android:id="@+id/btnEditarPerfil"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:gravity="center_horizontal|center_vertical"
-                android:orientation="vertical">
-
-                <Button
-                    android:id="@+id/btnEditarPerfil"
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:backgroundTint="#4CAF50"
-                    android:text="Editar" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center_horizontal|center_vertical"
-                android:orientation="vertical">
-
-                <Button
-                    android:id="@+id/btnCancelar"
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:backgroundTint="#A2A69C"
-                    android:onClick="volverMenu"
-                    android:text="Atras" />
-            </LinearLayout>
+                android:backgroundTint="#C32525"
+                android:fontFamily="@font/robotocondensed_regular"
+                android:text="Editar Datos"
+                android:textSize="20sp" />
 
         </LinearLayout>
 

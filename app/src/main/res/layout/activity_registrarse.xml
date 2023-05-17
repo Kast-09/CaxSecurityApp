@@ -111,11 +111,12 @@
           android:paddingTop="10dp">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tieNumeroTelefonoRegistro"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/robotocondensed_regular"
-            android:hint="Fecha de Nacimiento"
-            android:inputType="date"
+            android:hint="Número de teléfono"
+            android:inputType="phone"
             android:textSize="24sp" />
       </com.google.android.material.textfield.TextInputLayout>
 
@@ -125,11 +126,11 @@
           android:paddingTop="10dp">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/tieNumeroTelefonoRegistro"
+            android:id="@+id/tieDNIRegistro"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/robotocondensed_regular"
-            android:hint="Número de teléfono"
+            android:hint="Número de DNI"
             android:inputType="phone"
             android:textSize="24sp" />
       </com.google.android.material.textfield.TextInputLayout>

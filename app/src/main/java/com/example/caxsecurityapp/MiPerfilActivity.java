@@ -15,7 +15,7 @@ public class MiPerfilActivity extends AppCompatActivity {
     }
 
     public void volverMenu(View view){
-        Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+        Intent intent = new Intent(getApplicationContext(), InicioActivity.class);
         startActivity(intent);
     }
 
