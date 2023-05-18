@@ -26,6 +26,7 @@
                 android:textSize="20sp" />
 
             <RadioGroup
+                android:id="@+id/rgTipoReporte"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -83,6 +84,7 @@
                 android:paddingTop="10dp">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tieDescripcionReporte"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/robotocondensed_regular"
@@ -121,6 +123,7 @@
                 android:paddingTop="10dp">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tieDireccionReporte"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/robotocondensed_regular"
@@ -134,6 +137,7 @@
                 android:paddingTop="10dp">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tieReferenciaReporte"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/robotocondensed_regular"
@@ -223,7 +227,6 @@
                 android:backgroundTint="#C32525"
                 android:fontFamily="@font/robotocondensed_regular"
                 android:gravity="center_horizontal|center_vertical"
-                android:onClick="enviarReporte"
                 android:text="Enviar"
                 android:textSize="20sp" />
 

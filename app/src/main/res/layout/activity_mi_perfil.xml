@@ -121,7 +121,7 @@
                         android:paddingTop="10dp">
 
                         <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/tilDNI"
+                            android:id="@+id/tilPerfilDNI"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/robotocondensed_regular"
@@ -135,6 +135,7 @@
                         android:paddingTop="10dp">
 
                         <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/tilPerfilTelefono"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/robotocondensed_regular"
@@ -148,6 +149,7 @@
                         android:paddingTop="10dp">
 
                         <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/tilPerfilCorreo"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/robotocondensed_regular"

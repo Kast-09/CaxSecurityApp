@@ -22,12 +22,21 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthException;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class RegistrarseActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
     AwesomeValidation awesomeValidation;
-    private TextInputEditText tieCorreoRegistro, tieContrasenaRegistro, tieContrasenaVerificarRegistro;
+    private TextInputEditText tieCorreoRegistro, tieContrasenaRegistro, tieContrasenaVerificarRegistro,
+            tieNombreRegistro, tieNumeroTelefonoRegistro, tieDNIRegistro;
+
+    DatabaseReference mRootReference;
     private Button btnTomarFotoRegistro;
 
     @Override
@@ -36,17 +45,29 @@ public class RegistrarseActivity extends AppCompatActivity {
         setContentView(R.layout.activity_registrarse);
 
         mAuth = FirebaseAuth.getInstance();
-        awesomeValidation = new AwesomeValidation(ValidationStyle.BASIC);
-        awesomeValidation.addValidation(this, R.id.tieCorreoRegistro, Patterns.EMAIL_ADDRESS, R.string.invalid_mail);
-        awesomeValidation.addValidation(this, R.id.tieContrasenaRegistro, ".{6,}", R.string.invalid_password);
-        awesomeValidation.addValidation(this, R.id.tieContrasenaVerificarRegistro, ".{6,}", R.string.invalid_password);
+        mRootReference = FirebaseDatabase.getInstance().getReference();
 
+        awesomeValidation = new AwesomeValidation(ValidationStyle.BASIC);
+        //awesomeValidation.addValidation(this, R.id.tieNumeroTelefonoRegistro, ".{9,}", R.string.invalid_phone);
+        //awesomeValidation.addValidation(this, R.id.tieCorreoRegistro, Patterns.EMAIL_ADDRESS, R.string.invalid_mail);
+        //awesomeValidation.addValidation(this, R.id.tieContrasenaRegistro, ".{6,}", R.string.invalid_password);
+        //awesomeValidation.addValidation(this, R.id.tieContrasenaVerificarRegistro, ".{6,}", R.string.invalid_password);
+
+        tieNombreRegistro = findViewById(R.id.tieNombreRegistro);
+        tieNumeroTelefonoRegistro = findViewById(R.id.tieNumeroTelefonoRegistro);
+        tieDNIRegistro = findViewById(R.id.tieDNIRegistro);
         tieCorreoRegistro = findViewById(R.id.tieCorreoRegistro);
         tieContrasenaRegistro = findViewById(R.id.tieContrasenaRegistro);
         tieContrasenaVerificarRegistro = findViewById(R.id.tieContrasenaVerificarRegistro);
 
         btnTomarFotoRegistro = findViewById(R.id.btnTomarFotoRegistro);
 
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return false;
     }
 
     public void onStart(){
@@ -56,11 +77,16 @@ public class RegistrarseActivity extends AppCompatActivity {
     }
 
     public void registrarUsuario(View view){
+        String nombre = tieNombreRegistro.getText().toString();
+        String telefono = tieNumeroTelefonoRegistro.getText().toString();
+        String DNI = tieDNIRegistro.getText().toString();
         String correo = tieCorreoRegistro.getText().toString();
         String contrasena = tieContrasenaRegistro.getText().toString();
         String contrasenaValidar = tieContrasenaVerificarRegistro.getText().toString();
 
-        if(awesomeValidation.validate()){
+        cargarDatosFirebase(nombre, telefono, DNI, correo);
+
+        /*if(awesomeValidation.validate()){
             if(contrasena.trim().equals(contrasenaValidar.trim())){
                 mAuth.createUserWithEmailAndPassword(correo, contrasena).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
@@ -84,8 +110,18 @@ public class RegistrarseActivity extends AppCompatActivity {
         }
         else {
             Toast.makeText(this, "Completa los campos de manera correcta", Toast.LENGTH_SHORT).show();
-        }
+        }*/
 
+    }
+
+    private void cargarDatosFirebase(String nombre, String telefono, String DNI, String correo) {
+        Map<String, Object> datosUsuario = new HashMap<>();
+        datosUsuario.put("nombre", nombre);
+        datosUsuario.put("telefono", telefono);
+        datosUsuario.put("dni", DNI);
+        datosUsuario.put("correo", correo);
+
+        mRootReference.child("Usuario").push().setValue(datosUsuario);
     }
 
     private void dameToastdeerror(String error) {
