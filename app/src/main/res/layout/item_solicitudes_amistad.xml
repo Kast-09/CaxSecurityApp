@@ -64,7 +64,7 @@
                             android:id="@+id/btnAceptarSolicitud"
                             android:layout_width="120dp"
                             android:layout_height="wrap_content"
-                            android:backgroundTint="#4CAF50"
+                            android:backgroundTint="#017C06"
                             android:text="Aceptar" />
                     </LinearLayout>
 

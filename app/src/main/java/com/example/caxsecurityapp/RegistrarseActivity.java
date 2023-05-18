@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -27,6 +28,7 @@ public class RegistrarseActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     AwesomeValidation awesomeValidation;
     private TextInputEditText tieCorreoRegistro, tieContrasenaRegistro, tieContrasenaVerificarRegistro;
+    private Button btnTomarFotoRegistro;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +44,9 @@ public class RegistrarseActivity extends AppCompatActivity {
         tieCorreoRegistro = findViewById(R.id.tieCorreoRegistro);
         tieContrasenaRegistro = findViewById(R.id.tieContrasenaRegistro);
         tieContrasenaVerificarRegistro = findViewById(R.id.tieContrasenaVerificarRegistro);
+
+        btnTomarFotoRegistro = findViewById(R.id.btnTomarFotoRegistro);
+
     }
 
     public void onStart(){
