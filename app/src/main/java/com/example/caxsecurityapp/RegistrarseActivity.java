@@ -48,10 +48,10 @@ public class RegistrarseActivity extends AppCompatActivity {
         mRootReference = FirebaseDatabase.getInstance().getReference();
 
         awesomeValidation = new AwesomeValidation(ValidationStyle.BASIC);
-        //awesomeValidation.addValidation(this, R.id.tieNumeroTelefonoRegistro, ".{9,}", R.string.invalid_phone);
-        //awesomeValidation.addValidation(this, R.id.tieCorreoRegistro, Patterns.EMAIL_ADDRESS, R.string.invalid_mail);
-        //awesomeValidation.addValidation(this, R.id.tieContrasenaRegistro, ".{6,}", R.string.invalid_password);
-        //awesomeValidation.addValidation(this, R.id.tieContrasenaVerificarRegistro, ".{6,}", R.string.invalid_password);
+        awesomeValidation.addValidation(this, R.id.tieNumeroTelefonoRegistro, ".{9,}", R.string.invalid_phone);
+        awesomeValidation.addValidation(this, R.id.tieCorreoRegistro, Patterns.EMAIL_ADDRESS, R.string.invalid_mail);
+        awesomeValidation.addValidation(this, R.id.tieContrasenaRegistro, ".{6,}", R.string.invalid_password);
+        awesomeValidation.addValidation(this, R.id.tieContrasenaVerificarRegistro, ".{6,}", R.string.invalid_password);
 
         tieNombreRegistro = findViewById(R.id.tieNombreRegistro);
         tieNumeroTelefonoRegistro = findViewById(R.id.tieNumeroTelefonoRegistro);
@@ -84,9 +84,7 @@ public class RegistrarseActivity extends AppCompatActivity {
         String contrasena = tieContrasenaRegistro.getText().toString();
         String contrasenaValidar = tieContrasenaVerificarRegistro.getText().toString();
 
-        cargarDatosFirebase(nombre, telefono, DNI, correo);
-
-        /*if(awesomeValidation.validate()){
+        if(awesomeValidation.validate()){
             if(contrasena.trim().equals(contrasenaValidar.trim())){
                 mAuth.createUserWithEmailAndPassword(correo, contrasena).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
@@ -110,7 +108,8 @@ public class RegistrarseActivity extends AppCompatActivity {
         }
         else {
             Toast.makeText(this, "Completa los campos de manera correcta", Toast.LENGTH_SHORT).show();
-        }*/
+        }
+        cargarDatosFirebase(nombre, telefono, DNI, correo);
 
     }
 

@@ -130,6 +130,7 @@ public class EnviarReporteFragment extends Fragment {
         datosReporte.put("descripcionReporte", descripcionReporte);
         datosReporte.put("nombreBarrio", nombreBarrio);
         datosReporte.put("referencia", referencia);
+        datosReporte.put("estado", "ENVIADO");
 
         mRootReference.child("Reportes").push().setValue(datosReporte);
     }
