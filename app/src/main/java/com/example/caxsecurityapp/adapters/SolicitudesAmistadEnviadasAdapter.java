@@ -25,7 +25,7 @@ public class SolicitudesAmistadEnviadasAdapter extends RecyclerView.Adapter {
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());//aquí llamamos al contexto
 
-        View itemView = inflater.inflate(R.layout.item_solicitudes_enviadas, parent, false);//aquí hacemos referencia al item creado
+        View itemView = inflater.inflate(R.layout.item_solicitudes_amistad, parent, false);//aquí hacemos referencia al item creado
 
         return new SolicitudesAmistadEnviadasViewHolder(itemView);
     }

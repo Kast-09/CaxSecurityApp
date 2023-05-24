@@ -102,25 +102,6 @@ public class EnviarReporteFragment extends Fragment {
         });
     }
 
-    /*public void enviarReporte(View view){
-        String tipoReporte = "";
-        if(rbReporteAnonimo.isSelected()){
-            tipoReporte = rbReporteAnonimo.getText().toString();
-        }
-        else if(rbReportePublico.isSelected()){
-            tipoReporte = rbReporteAnonimo.getText().toString();
-        }
-        String reporte = spTipoReporte.getSelectedItem().toString();
-        String descripcionReporte = tieDescripcionReporte.getText().toString();
-        String nombreBarrio = spNombreBarrio.getSelectedItem().toString();
-        String direccion = tieDireccionReporte.getText().toString();
-        String referencia = tieReferenciaReporte.getText().toString();
-
-        cargarDatosFirebase(tipoReporte, reporte, descripcionReporte, nombreBarrio, direccion, referencia);
-
-        Toast.makeText(this.getContext(), "Reporte enviado", Toast.LENGTH_SHORT).show();
-    }*/
-
     private void cargarDatosFirebase(String tipoReporte, String reporte, String descripcionReporte, String nombreBarrio, String direccion, String referencia) {
 
         Map<String, Object> datosReporte = new HashMap<>();

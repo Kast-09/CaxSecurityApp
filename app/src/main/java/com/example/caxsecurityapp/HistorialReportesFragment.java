@@ -59,10 +59,10 @@ public class HistorialReportesFragment extends Fragment {
                 for(DataSnapshot snapshot : dataSnapshot.getChildren()){
                     Reportes reportes = snapshot.getValue(Reportes.class);
                     if(reportes.idUsuario.equals(idUsuario)){
-                        Log.i("Reporte", " "+snapshot.getValue());
                         dataReportes.add(reportes);
                     }
                 }
+
                 rvHistorialReportes.setLayoutManager(new LinearLayoutManager(getContext()));
                 rvHistorialReportes.setAdapter(new HistorialReportesAdapter(dataReportes));
             }
@@ -93,7 +93,6 @@ public class HistorialReportesFragment extends Fragment {
                             if(user.correo.equals(email)){
                                 idUsuario = snapshot.getKey().toString();
                             }
-                            Log.i("ID", snapshot.getKey().toString());
                         }
 
                         @Override

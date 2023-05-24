@@ -33,11 +33,8 @@ public class SolicitudesAmistadAdapter extends RecyclerView.Adapter {
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        TextView tvCorreoSolicitudAmistad = holder.itemView.findViewById(R.id.tvCorreoSolicitudAmistad);
-        tvCorreoSolicitudAmistad.setText(data.get(position).correoUsuarioReceptor);
-
-        TextView tvEstadoSolicitudAmistad = holder.itemView.findViewById(R.id.tvEstadoSolicitud);
-        tvEstadoSolicitudAmistad.setText("Pendiente");
+        TextView tvNombreSolicitudAmistad = holder.itemView.findViewById(R.id.tvNombreSolicitudAmistad);
+        tvNombreSolicitudAmistad.setText(data.get(position).nombreUsuarioRemitente);
     }
 
     @Override

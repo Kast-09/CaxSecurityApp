@@ -2,12 +2,8 @@
 <resources>
     <string-array name="combo_tipos">
         <item> -- ELIJA OPCIÓN -- </item>
-        <item>Accidente de tránsito</item>
-        <item>Acoso sexual</item>
-        <item>Robo</item>
-        <item>Ruido excesivo</item>
-        <item>Vandalismo</item>
-        <item>Venta de droga</item>
-        <item>Otro</item>
+        <item>ACCIDENTE DE TRÁNSITO</item>
+        <item>DELITOS (CUALQUIER DELITO)</item>
+        <item>OTRO</item>
     </string-array>
 </resources>

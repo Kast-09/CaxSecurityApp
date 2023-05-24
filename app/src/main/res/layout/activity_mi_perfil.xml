@@ -45,6 +45,7 @@
                         android:padding="15dp"
                         android:text="Mi perfil"
                         android:textAlignment="center"
+                        android:textColor="#000000"
                         android:textSize="40sp" />
                 </LinearLayout>
 
@@ -102,60 +103,156 @@
                     android:orientation="vertical"
                     android:padding="10dp">
 
-                    <com.google.android.material.textfield.TextInputLayout
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
 
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/tilPefilNombre"
+                        <TextView
+                            android:id="@+id/tvNombreUsuario"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/robotocondensed_regular"
-                            android:hint="Nombre Usuario"
-                            android:textSize="20sp" />
-                    </com.google.android.material.textfield.TextInputLayout>
+                            android:text="Nombre"
+                            android:textSize="18dp" />
 
-                    <com.google.android.material.textfield.TextInputLayout
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal"
+                            android:paddingTop="8dp">
+
+                            <TextView
+                                android:id="@+id/tvNombreUsuarioPerfil"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/robotocondensed_regular"
+                                android:text="TextView"
+                                android:textColor="#000000"
+                                android:textSize="20dp" />
+
+                            <ImageButton
+                                android:id="@+id/btnEditNombreUsuario"
+                                android:layout_width="50dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:background="#00FFFFFF"
+                                app:srcCompat="@drawable/ic_edit" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
                         android:paddingTop="10dp">
 
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/tilPerfilDNI"
+                        <TextView
+                            android:id="@+id/tvDNIUsuario"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/robotocondensed_regular"
-                            android:hint="Número de DNI"
-                            android:textSize="20sp" />
-                    </com.google.android.material.textfield.TextInputLayout>
+                            android:text="DNI"
+                            android:textSize="18dp" />
 
-                    <com.google.android.material.textfield.TextInputLayout
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal"
+                            android:paddingTop="8dp">
+
+                            <TextView
+                                android:id="@+id/tvDNIUsuarioPerfil"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/robotocondensed_regular"
+                                android:text="TextView"
+                                android:textColor="#000000"
+                                android:textSize="20dp" />
+
+                            <ImageButton
+                                android:id="@+id/btnEditDNIUsuario"
+                                android:layout_width="50dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:background="#00FFFFFF"
+                                app:srcCompat="@drawable/ic_edit" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
                         android:paddingTop="10dp">
 
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/tilPerfilTelefono"
+                        <TextView
+                            android:id="@+id/tvTelefonoUsuario"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/robotocondensed_regular"
-                            android:hint="Número de teléfono"
-                            android:textSize="20sp" />
-                    </com.google.android.material.textfield.TextInputLayout>
+                            android:text="Teléfono"
+                            android:textSize="18dp" />
 
-                    <com.google.android.material.textfield.TextInputLayout
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal"
+                            android:paddingTop="8dp">
+
+                            <TextView
+                                android:id="@+id/tvTelefonoUsuarioPerfil"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/robotocondensed_regular"
+                                android:text="TextView"
+                                android:textColor="#000000"
+                                android:textSize="20dp" />
+
+                            <ImageButton
+                                android:id="@+id/btnEditTelefonoUsuario"
+                                android:layout_width="50dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:background="#00FFFFFF"
+                                app:srcCompat="@drawable/ic_edit" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
                         android:paddingTop="10dp">
 
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/tilPerfilCorreo"
+                        <TextView
+                            android:id="@+id/tvCorreoUsuario"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/robotocondensed_regular"
-                            android:hint="Correo"
-                            android:textSize="20sp" />
-                    </com.google.android.material.textfield.TextInputLayout>
+                            android:text="Correo"
+                            android:textSize="18dp" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal"
+                            android:paddingTop="8dp">
+
+                            <TextView
+                                android:id="@+id/tvCorreoUsuarioPerfil"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/robotocondensed_regular"
+                                android:text="TextView"
+                                android:textColor="#000000"
+                                android:textSize="20dp" />
+                        </LinearLayout>
+                    </LinearLayout>
 
                 </LinearLayout>
 
@@ -175,16 +272,6 @@
                         android:gravity="center_horizontal|center_vertical"
                         android:onClick="irActualizarContrasena"
                         android:text="Actualizar Contraseña"
-                        android:textSize="20sp" />
-
-                    <Button
-                        android:id="@+id/btnEditarPerfil"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:backgroundTint="#C32525"
-                        android:fontFamily="@font/robotocondensed_regular"
-                        android:text="Editar Datos"
                         android:textSize="20sp" />
 
                 </LinearLayout>

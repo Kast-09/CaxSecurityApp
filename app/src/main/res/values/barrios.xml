@@ -2,27 +2,30 @@
 <resources>
     <string-array name="combo_barrios">
         <item> -- ELIJA OPCIÓN -- </item>
-        <item>BARRIO 2 DE MAYO</item>
-        <item>BARRIO CHONTAPACCHA</item>
-        <item>BARRIO CUMBE MAYO</item>
-        <item>BARRIO EL ESTANCO</item>
-        <item>BARRIO LA COLMENA</item>
-        <item>BARRIO LA FLORIDA</item>
-        <item>BARRIO LA MERCED</item>
-        <item>BARRIO LUCMACUCHO</item>
-        <item>BARRIO MOLLEPAMPA</item>
-        <item>BARRIO NUEVO CAJAMARCA</item>
-        <item>BARRIO PUEBLO LIBRE</item>
+        <item>BARRIO 1° DE MAYO BAJO</item>
+        <item>BARRIO 15 DE SEPTIEMBRE</item>
+        <item>BARRIO ALTO CHAQUIL</item>
+        <item>BARRIO BARCOS</item>
+        <item>BARRIO BUENA VISTA</item>
+        <item>BARRIO CHAQUIL</item>
+        <item>BARRIO CRUZ DE MARÍA</item>
+        <item>BARRIO EL COMBO</item>
+        <item>BARRIO JOSÉ GÁLVEZ</item>
+        <item>BARRIO LA PRIMAVERA</item>
+        <item>BARRIO LA UNIÓN</item>
+        <item>BARRIO LOS ALCANFORES</item>
+        <item>BARRIO LOS AMAUTAS</item>
+        <item>BARRIO MAGISTERIAL</item>
+        <item>BARRIO NIÑO DIOS</item>
+        <item>BARRIO NUEVO ORIENTE</item>
         <item>BARRIO PUEBLO NUEVO</item>
-        <item>BARRIO SAN ANTONIO</item>
-        <item>BARRIO SAN JOSÉ</item>
-        <item>BARRIO SAN MARTÍN</item>
-        <item>BARRIO SAN PEDRO</item>
-        <item>BARRIO SAN SEBASTIÁN</item>
-        <item>BARRIO SAN VICENTE</item>
-        <item>BARRIO SANTA APOLONIA</item>
-        <item>BARRIO SANTA ELENA</item>
-        <item>BARRIO URUBAMBA</item>
-        <item>BARRIO VICTOR RAÚL</item>
+        <item>BARRIO SAN ISIDRO</item>
+        <item>BARRIO SAN JUAN</item>
+        <item>BARRIO SAN JUAN BAUTISTA</item>
+        <item>BARRIO SAN RAFAEL</item>
+        <item>BARRIO SAN RAMÓN DE CARMENPAMPA</item>
+        <item>BARRIO SANTA CELIA</item>
+        <item>BARRIO SANTA MARÍA</item>
+        <item>BARRIO TOMÁS GÁLVEZ</item>
     </string-array>
 </resources>

@@ -6,7 +6,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
+import android.widget.TextView;
 
 import com.example.caxsecurityapp.entities.Usuario;
 import com.google.android.material.textfield.TextInputEditText;
@@ -22,7 +24,7 @@ public class MiPerfilActivity extends AppCompatActivity {
 
     DatabaseReference mRootReference;
     private String email;
-    private TextInputEditText tilPefilNombre, tilPerfilDNI, tilPerfilTelefono, tilPerfilCorreo;
+    private TextView tvNombreUsuarioPerfil, tvDNIUsuarioPerfil, tvTelefonoUsuarioPerfil, tvCorreoUsuarioPerfil;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,19 +33,15 @@ public class MiPerfilActivity extends AppCompatActivity {
 
         mRootReference = FirebaseDatabase.getInstance().getReference();
 
-        tilPefilNombre = findViewById(R.id.tilPefilNombre);
-        tilPerfilDNI = findViewById(R.id.tilPerfilDNI);
-        tilPerfilTelefono = findViewById(R.id.tilPerfilTelefono);
-        tilPerfilCorreo = findViewById(R.id.tilPerfilCorreo);
+        tvNombreUsuarioPerfil = findViewById(R.id.tvNombreUsuarioPerfil);
+        tvDNIUsuarioPerfil = findViewById(R.id.tvDNIUsuarioPerfil);
+        tvTelefonoUsuarioPerfil = findViewById(R.id.tvTelefonoUsuarioPerfil);
+        tvCorreoUsuarioPerfil = findViewById(R.id.tvCorreoUsuarioPerfil);
+
 
         obtenerCorreoUsuario();
         obtenerDatosUsuario();
 
-    }
-
-    public void volverMenu(View view){
-        Intent intent = new Intent(getApplicationContext(), InicioActivity.class);
-        startActivity(intent);
     }
 
     public void irActualizarContrasena(View view){
@@ -55,6 +53,7 @@ public class MiPerfilActivity extends AppCompatActivity {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
             email = user.getEmail();
+            Log.i("ID", email);
         }
     }
 
@@ -67,13 +66,13 @@ public class MiPerfilActivity extends AppCompatActivity {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             Usuario user = snapshot.getValue(Usuario.class);
-                            if(user.correo.equals(email)){
-                                tilPefilNombre.setText(user.nombre);
-                                tilPerfilDNI.setText(user.dni);
-                                tilPerfilTelefono.setText(user.telefono);
-                                tilPerfilCorreo.setText(user.correo);
+                            if(user.correo.equalsIgnoreCase(email)){
+                                tvNombreUsuarioPerfil.setText(user.nombre);
+                                tvDNIUsuarioPerfil.setText(user.dni);
+                                tvTelefonoUsuarioPerfil.setText(user.telefono);
+                                tvCorreoUsuarioPerfil.setText(user.correo);
                             }
-                            Log.i("ID", snapshot.getKey().toString());
+                            Log.i("ID", snapshot.getKey());
                         }
 
                         @Override
@@ -89,5 +88,12 @@ public class MiPerfilActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        Intent intent = new Intent(getApplicationContext(), InicioActivity.class);
+        startActivity(intent);
+        return super.onKeyDown(keyCode, event);
     }
 }

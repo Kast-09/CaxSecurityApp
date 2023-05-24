@@ -2,6 +2,7 @@ package com.example.caxsecurityapp.entities;
 
 public class Reportes {
 
+    public String idReporte;
     public String descripcionReporte;
     public String estado;
     public String idUsuario;
@@ -11,6 +12,14 @@ public class Reportes {
     public String tipoReporte;
 
     public Reportes() {
+    }
+
+    public String getIdReporte() {
+        return idReporte;
+    }
+
+    public void setIdReporte(String idReporte) {
+        this.idReporte = idReporte;
     }
 
     public String getDescripcionReporte() {
