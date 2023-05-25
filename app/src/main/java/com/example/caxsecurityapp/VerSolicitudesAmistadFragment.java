@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.caxsecurityapp.adapters.SolicitudesAmistadAdapter;
 import com.example.caxsecurityapp.adapters.SolicitudesAmistadEnviadasAdapter;
 import com.example.caxsecurityapp.entities.Reportes;
 import com.example.caxsecurityapp.entities.SolicitudAmistad;
@@ -67,7 +68,7 @@ public class VerSolicitudesAmistadFragment extends Fragment {
                 }
 
                 rvSolicitudesAmistadFragment.setLayoutManager(new LinearLayoutManager(getContext()));
-                rvSolicitudesAmistadFragment.setAdapter(new SolicitudesAmistadEnviadasAdapter(dataSolicitudes));
+                rvSolicitudesAmistadFragment.setAdapter(new SolicitudesAmistadAdapter(dataSolicitudes));
             }
 
             @Override

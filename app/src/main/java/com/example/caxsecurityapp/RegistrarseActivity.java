@@ -93,6 +93,7 @@ public class RegistrarseActivity extends AppCompatActivity {
                             Intent intent = new Intent(getApplicationContext(), IniciarSesionActivity.class);
                             Toast.makeText(getApplicationContext(), "Registro Exitoso", Toast.LENGTH_SHORT).show();
                             finish();
+                            cargarDatosFirebase(nombre, telefono, DNI, correo);
                             startActivity(intent);
                         }
                         else{
@@ -109,7 +110,6 @@ public class RegistrarseActivity extends AppCompatActivity {
         else {
             Toast.makeText(this, "Completa los campos de manera correcta", Toast.LENGTH_SHORT).show();
         }
-        cargarDatosFirebase(nombre, telefono, DNI, correo);
 
     }
 

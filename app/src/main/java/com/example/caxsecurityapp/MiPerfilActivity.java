@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.example.caxsecurityapp.entities.Usuario;
@@ -19,14 +21,16 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.gson.Gson;
 
 public class MiPerfilActivity extends AppCompatActivity {
 
     DatabaseReference mRootReference;
     private String email;
     private TextView tvNombreUsuarioPerfil, tvDNIUsuarioPerfil, tvTelefonoUsuarioPerfil, tvCorreoUsuarioPerfil;
+    private ImageButton btnEditNombreUsuario, btnEditDNIUsuario, btnEditTelefonoUsuario;
 
-    @Override
+   @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mi_perfil);
@@ -38,10 +42,37 @@ public class MiPerfilActivity extends AppCompatActivity {
         tvTelefonoUsuarioPerfil = findViewById(R.id.tvTelefonoUsuarioPerfil);
         tvCorreoUsuarioPerfil = findViewById(R.id.tvCorreoUsuarioPerfil);
 
+        btnEditNombreUsuario = findViewById(R.id.btnEditNombreUsuario);
+        btnEditDNIUsuario = findViewById(R.id.btnEditDNIUsuario);
+        btnEditTelefonoUsuario = findViewById(R.id.btnEditTelefonoUsuario);
+
 
         obtenerCorreoUsuario();
         obtenerDatosUsuario();
 
+        btnEditNombreUsuario.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                EditarNombreUsuarioFragment fm = new EditarNombreUsuarioFragment();
+                fm.show(getSupportFragmentManager(), "Editar nombre usuario");
+            }
+        });
+
+       btnEditDNIUsuario.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View view) {
+               EditarDniUsuarioFragment fm = new EditarDniUsuarioFragment();
+               fm.show(getSupportFragmentManager(), "Editar DNI usuario");
+           }
+       });
+
+       btnEditTelefonoUsuario.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View view) {
+               EditarTelefonoUsuarioFragment fm = new EditarTelefonoUsuarioFragment();
+               fm.show(getSupportFragmentManager(), "Editar Teléfono usuario");
+           }
+       });
     }
 
     public void irActualizarContrasena(View view){

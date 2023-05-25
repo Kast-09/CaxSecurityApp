@@ -25,15 +25,18 @@ public class SolicitudesAmistadEnviadasAdapter extends RecyclerView.Adapter {
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());//aquí llamamos al contexto
 
-        View itemView = inflater.inflate(R.layout.item_solicitudes_amistad, parent, false);//aquí hacemos referencia al item creado
+        View itemView = inflater.inflate(R.layout.item_solicitudes_enviadas, parent, false);//aquí hacemos referencia al item creado
 
         return new SolicitudesAmistadEnviadasViewHolder(itemView);
     }
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        TextView tvNombreSolicitudAmistad = holder.itemView.findViewById(R.id.tvNombreSolicitudAmistad);
-        tvNombreSolicitudAmistad.setText(data.get(position).nombreUsuarioRemitente);
+        TextView tvCorreoSolicitudAmistad = holder.itemView.findViewById(R.id.tvCorreoSolicitudAmistad);
+        tvCorreoSolicitudAmistad.setText(data.get(position).correoUsuarioReceptor);
+
+        TextView tvEstadoSolicitud = holder.itemView.findViewById(R.id.tvEstadoSolicitud);
+        tvEstadoSolicitud.setText("PENDIENTE");
     }
 
     @Override

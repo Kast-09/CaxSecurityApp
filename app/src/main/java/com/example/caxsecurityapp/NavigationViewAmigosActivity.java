@@ -40,7 +40,7 @@ public class NavigationViewAmigosActivity extends AppCompatActivity {
                     case R.id.ver_enviar_solicitud:
                         getSupportFragmentManager().beginTransaction().replace(R.id.containerAmigos, enviarSolicitudAmistadFragment).commit();
                         return true;
-                    case R.id.ver_solicitudes_pendientes:
+                    case R.id.ver_solicitudes_enviadas:
                         getSupportFragmentManager().beginTransaction().replace(R.id.containerAmigos, solicitudesAmistadPendientesFragment).commit();
                         return true;
                 }

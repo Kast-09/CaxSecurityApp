@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context=".EditarNombreUsuarioFragment">
+    tools:context=".EditarDniUsuarioFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -12,11 +12,11 @@
         android:padding="10dp">
 
         <TextView
-            android:id="@+id/textView13"
+            android:id="@+id/textView14"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/robotocondensed_regular"
-            android:text="Editar Nombre"
+            android:text="Editar DNI"
             android:textAlignment="center"
             android:textSize="40dp" />
 
@@ -26,11 +26,11 @@
             android:paddingTop="10dp">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/tieNombreEditarUsuario"
+                android:id="@+id/tieDNIEditarUsuario"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/robotocondensed_regular"
-                android:hint="Nombre"
+                android:hint="DNI"
                 android:textSize="20dp" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -43,4 +43,5 @@
             android:textSize="20dp" />
 
     </LinearLayout>
+
 </androidx.cardview.widget.CardView>
