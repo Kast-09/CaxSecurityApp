@@ -5,14 +5,17 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
-import androidx.fragment.app.Fragment;
 
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.caxsecurityapp.entities.Usuario;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -22,10 +25,15 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class EditarDniUsuarioFragment extends DialogFragment {
-    String email;
+    String email, idUser;
     TextInputEditText tieDNIEditarUsuario;
     DatabaseReference mRootReference;
+
+    Button btnEditDNI;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -46,9 +54,32 @@ public class EditarDniUsuarioFragment extends DialogFragment {
 
         tieDNIEditarUsuario = view.findViewById(R.id.tieDNIEditarUsuario);
 
+        btnEditDNI = view.findViewById(R.id.btnEditTelefono);
+
         obtenerCorreoUsuario();
         obtenerDatosUsuario();
-        //Intent intent =
+
+        btnEditDNI.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Map<String, Object> actualizarNombre = new HashMap<>();
+                actualizarNombre.put("dni", tieDNIEditarUsuario.getText().toString());
+                Log.i("ID", FirebaseAuth.getInstance().getCurrentUser().getUid());
+                mRootReference.child("Usuario").child(idUser).updateChildren(actualizarNombre).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void unused) {
+                        Toast.makeText(getContext(), "DNI de usuario actualizado", Toast.LENGTH_LONG).show();
+                        dismiss();
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(getContext(), "No se pudo actualizar el DNI", Toast.LENGTH_LONG).show();
+                        dismiss();
+                    }
+                });
+            }
+        });
     }
 
     public void obtenerCorreoUsuario(){
@@ -70,8 +101,8 @@ public class EditarDniUsuarioFragment extends DialogFragment {
                             Usuario user = snapshot.getValue(Usuario.class);
                             if(user.correo.equalsIgnoreCase(email)){
                                 tieDNIEditarUsuario.setText(user.dni);
+                                idUser = snapshot.getKey();
                             }
-                            Log.i("ID", snapshot.getKey());
                         }
 
                         @Override

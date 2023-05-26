@@ -37,7 +37,6 @@ public class RegistrarseActivity extends AppCompatActivity {
             tieNombreRegistro, tieNumeroTelefonoRegistro, tieDNIRegistro;
 
     DatabaseReference mRootReference;
-    private Button btnTomarFotoRegistro;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,8 +58,6 @@ public class RegistrarseActivity extends AppCompatActivity {
         tieCorreoRegistro = findViewById(R.id.tieCorreoRegistro);
         tieContrasenaRegistro = findViewById(R.id.tieContrasenaRegistro);
         tieContrasenaVerificarRegistro = findViewById(R.id.tieContrasenaVerificarRegistro);
-
-        btnTomarFotoRegistro = findViewById(R.id.btnTomarFotoRegistro);
 
     }
 

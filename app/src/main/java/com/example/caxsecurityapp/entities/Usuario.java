@@ -8,6 +8,7 @@ public class Usuario {
     public String telefono;
     public String dni;
     public String correo;
+    public String photo;
 
     public String getNombre() {
         return nombre;
@@ -41,6 +42,11 @@ public class Usuario {
         this.correo = correo;
     }
 
+    public String getPhoto() {
+        return photo;
+    }
 
-
+    public void setPhoto(String photo) {
+        this.photo = photo;
+    }
 }

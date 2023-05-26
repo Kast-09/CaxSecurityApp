@@ -11,8 +11,12 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.caxsecurityapp.entities.Usuario;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -22,11 +26,15 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class EditarTelefonoUsuarioFragment extends DialogFragment {
 
-    String email;
+    String email, idUser;
     TextInputEditText tieTelefonoEditarUsuario;
     DatabaseReference mRootReference;
+    Button btnEditTelefono;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -47,9 +55,32 @@ public class EditarTelefonoUsuarioFragment extends DialogFragment {
         mRootReference = FirebaseDatabase.getInstance().getReference();
 
         tieTelefonoEditarUsuario = view.findViewById(R.id.tieTelefonoEditarUsuario);
+        btnEditTelefono = view.findViewById(R.id.btnEditTelefono);
 
         obtenerCorreoUsuario();
         obtenerDatosUsuario();
+
+        btnEditTelefono.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Map<String, Object> actualizarNombre = new HashMap<>();
+                actualizarNombre.put("telefono", tieTelefonoEditarUsuario.getText().toString());
+                Log.i("ID", FirebaseAuth.getInstance().getCurrentUser().getUid());
+                mRootReference.child("Usuario").child(idUser).updateChildren(actualizarNombre).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void unused) {
+                        Toast.makeText(getContext(), "Número de teléfono de usuario actualizado", Toast.LENGTH_LONG).show();
+                        dismiss();
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(getContext(), "No se pudo actualizar el número de teléfono", Toast.LENGTH_LONG).show();
+                        dismiss();
+                    }
+                });
+            }
+        });
     }
 
     public void obtenerCorreoUsuario(){
@@ -71,6 +102,7 @@ public class EditarTelefonoUsuarioFragment extends DialogFragment {
                             Usuario user = snapshot.getValue(Usuario.class);
                             if(user.correo.equalsIgnoreCase(email)){
                                 tieTelefonoEditarUsuario.setText(user.telefono);
+                                idUser = snapshot.getKey();
                             }
                             Log.i("ID", snapshot.getKey());
                         }

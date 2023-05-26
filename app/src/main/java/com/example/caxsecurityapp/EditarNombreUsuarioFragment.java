@@ -1,6 +1,5 @@
 package com.example.caxsecurityapp;
 
-import android.content.DialogInterface;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -17,7 +16,6 @@ import android.widget.Toast;
 import com.example.caxsecurityapp.entities.Usuario;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -56,7 +54,7 @@ public class EditarNombreUsuarioFragment extends DialogFragment {
         mRootReference = FirebaseDatabase.getInstance().getReference();
 
         tieNombreEditarUsuario = view.findViewById(R.id.tieNombreEditarUsuario);
-        btnEditNombre = view.findViewById(R.id.btnEditNombre);
+        btnEditNombre = view.findViewById(R.id.btnEditTelefono);
 
         obtenerCorreoUsuario();
         obtenerDatosUsuario();
@@ -105,7 +103,6 @@ public class EditarNombreUsuarioFragment extends DialogFragment {
                                 tieNombreEditarUsuario.setText(user.nombre);
                                 idUser = snapshot.getKey();
                             }
-                            Log.i("ID", snapshot.getKey());
                         }
 
                         @Override

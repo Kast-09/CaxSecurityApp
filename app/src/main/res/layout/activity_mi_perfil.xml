@@ -53,14 +53,15 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal|center_vertical"
-                    android:orientation="vertical"
+                    android:orientation="horizontal"
                     android:padding="15dp">
 
                     <LinearLayout
-                        android:layout_width="160dp"
-                        android:layout_height="130dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
                         android:gravity="center_horizontal|center_vertical"
-                        android:orientation="vertical">
+                        android:orientation="vertical"
+                        android:padding="10dp">
 
                         <ImageView
                             android:id="@+id/ivFotoPerfil"
@@ -74,25 +75,38 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center_horizontal|center_vertical"
-                        android:orientation="horizontal">
+                        android:orientation="vertical">
 
                         <Button
                             android:id="@+id/btnTomarFoto"
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
                             android:backgroundTint="#C32525"
                             android:fontFamily="@font/robotocondensed_regular"
                             android:text="Tomar Foto"
-                            android:textSize="20sp" />
+                            android:textSize="20sp"
+                            app:icon="@drawable/ic_camera" />
 
                         <Button
                             android:id="@+id/brnSeleccionarFoto"
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:backgroundTint="#F44336"
                             android:fontFamily="@font/robotocondensed_regular"
                             android:text="Seleccionar Foto"
-                            android:textSize="20sp" />
+                            android:textSize="20sp"
+                            app:icon="@drawable/ic_add_photo" />
+
+                        <Button
+                            android:id="@+id/btnDeletePhoto"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:backgroundTint="#FF9800"
+                            android:fontFamily="@font/robotocondensed_regular"
+                            android:text="Eliminar foto"
+                            android:textSize="20dp"
+                            app:icon="@drawable/ic_delete" />
 
                     </LinearLayout>
                 </LinearLayout>
