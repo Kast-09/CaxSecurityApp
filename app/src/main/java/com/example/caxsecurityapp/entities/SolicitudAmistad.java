@@ -4,6 +4,7 @@ public class SolicitudAmistad {
     public String idUsuarioRemitente;
     public String nombreUsuarioRemitente;
     public String correoUsuarioReceptor;
+    public String fotoUsuario;
 
     public SolicitudAmistad() {
     }
@@ -30,5 +31,21 @@ public class SolicitudAmistad {
 
     public void setNombreUsuarioReceptor(String nombreUsuarioReceptor) {
         this.nombreUsuarioRemitente = nombreUsuarioReceptor;
+    }
+
+    public String getNombreUsuarioRemitente() {
+        return nombreUsuarioRemitente;
+    }
+
+    public void setNombreUsuarioRemitente(String nombreUsuarioRemitente) {
+        this.nombreUsuarioRemitente = nombreUsuarioRemitente;
+    }
+
+    public String getFotoUsuario() {
+        return fotoUsuario;
+    }
+
+    public void setFotoUsuario(String fotoUsuario) {
+        this.fotoUsuario = fotoUsuario;
     }
 }

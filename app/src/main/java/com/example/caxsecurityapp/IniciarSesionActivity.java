@@ -81,6 +81,9 @@ public class IniciarSesionActivity extends AppCompatActivity {
                 }
             });
         }
+        else {
+            Toast.makeText(this,"Complete los campos correctamente", Toast.LENGTH_LONG).show();
+        }
     }
 
     public void irRegistro(View view){
@@ -95,8 +98,6 @@ public class IniciarSesionActivity extends AppCompatActivity {
 
     public void irHome(){
         Intent intent = new Intent(getApplicationContext(), InicioActivity.class);
-        //intent.putExtra("correo", etCorreo.getText().toString());
-        //intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
     }
     private void dameToastdeerror(String error) {

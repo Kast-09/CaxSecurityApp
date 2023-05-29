@@ -25,18 +25,8 @@ public class InicioActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void verViewAmigos(View view){
-        Intent intent = new Intent(getApplicationContext(), NavigationViewAmigosActivity.class);
-        startActivity(intent);
-    }
-
     public void irReportes(View view){
         Intent intent = new Intent(getApplicationContext(), NavigationViewReportesActivity.class);
-        startActivity(intent);
-    }
-
-    public void irViewCompartirMiUbicacion(View view){
-        Intent intent = new Intent(getApplicationContext(), CompartirUbicacionActivity.class);
         startActivity(intent);
     }
 

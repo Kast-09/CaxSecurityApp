@@ -4,6 +4,7 @@ public class Amigo {
     public String idUsuario;
     public String idAmigo;
     public String nombreAmigo;
+    public String fotoUsuario;
 
     public Amigo() {
     }
@@ -30,5 +31,13 @@ public class Amigo {
 
     public void setNombreAmigo(String nombreAmigo) {
         this.nombreAmigo = nombreAmigo;
+    }
+
+    public String getFotoUsuario() {
+        return fotoUsuario;
+    }
+
+    public void setFotoUsuario(String fotoUsuario) {
+        this.fotoUsuario = fotoUsuario;
     }
 }

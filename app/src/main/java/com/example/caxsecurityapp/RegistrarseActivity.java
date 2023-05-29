@@ -48,6 +48,7 @@ public class RegistrarseActivity extends AppCompatActivity {
 
         awesomeValidation = new AwesomeValidation(ValidationStyle.BASIC);
         awesomeValidation.addValidation(this, R.id.tieNumeroTelefonoRegistro, ".{9,}", R.string.invalid_phone);
+        awesomeValidation.addValidation(this, R.id.tieDNIRegistro, ".{8,}", R.string.invalid_dni);
         awesomeValidation.addValidation(this, R.id.tieCorreoRegistro, Patterns.EMAIL_ADDRESS, R.string.invalid_mail);
         awesomeValidation.addValidation(this, R.id.tieContrasenaRegistro, ".{6,}", R.string.invalid_password);
         awesomeValidation.addValidation(this, R.id.tieContrasenaVerificarRegistro, ".{6,}", R.string.invalid_password);

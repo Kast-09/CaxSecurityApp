@@ -3,6 +3,7 @@
     <string name="invalid_mail">Ingrese correo valido</string>
     <string name="invalid_password">Ingrese contraseña mayor a 6 dígitos</string>
     <string name="invalid_phone">Ingrese número de teléfono de 9 dígitos</string>
+    <string name="invalid_dni">Ingrese número de DNI de 8 dígitos</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

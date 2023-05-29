@@ -6,12 +6,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.core.content.res.ResourcesCompat;
 
+import android.Manifest;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
+import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
@@ -42,6 +45,7 @@ import com.google.firebase.storage.UploadTask;
 import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
 
+import java.io.ByteArrayOutputStream;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -124,11 +128,15 @@ public class MiPerfilActivity extends AppCompatActivity {
        btnTomarFoto.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View view) {
-               //int permiso = ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.class.);
-               /*if(checkSelfPermission(Manifest.permission.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION()) == PackageManager.PERMISSION_GRANTED){
-
-               }*/
-               //abrirCamara();
+               if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                   requestPermissions(new String[] {Manifest.permission.WRITE_EXTERNAL_STORAGE}, 101);
+                   if(checkSelfPermission(Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED){
+                       abrirCamara();
+                   }
+                   else {
+                       requestPermissions(new String[] {Manifest.permission.CAMERA}, 100);
+                   }
+               }
            }
        });
 
@@ -217,7 +225,13 @@ public class MiPerfilActivity extends AppCompatActivity {
             }
         }
         if(requestCode == 1000 && resultCode == RESULT_OK){// el CAMERA_REQUEST es para validar que sea una petición de abrir la cámara y el RESULT_OK es para validar que al abrir la cámara todo salio bien y no hubo errores
-            imageUrl = data.getData();
+            Bundle extras = data.getExtras();
+            Bitmap imageBitmap = (Bitmap) extras.get("data");
+
+            ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+            imageBitmap.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
+            String path = MediaStore.Images.Media.insertImage(this.getContentResolver(), imageBitmap, "Title", null);
+            imageUrl = Uri.parse(path);
             subirPhoto(imageUrl);
         }
         super.onActivityResult(requestCode, resultCode, data);

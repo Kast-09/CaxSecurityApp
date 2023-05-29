@@ -29,10 +29,11 @@
                 android:id="@+id/tvTittleActualizarContrasena"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
+                android:fontFamily="@font/robotocondensed_regular"
                 android:gravity="center_vertical"
                 android:text="Actualizar Contraseña"
                 android:textAlignment="center"
-                android:textSize="34sp" />
+                android:textSize="40dp" />
 
         </LinearLayout>
 
@@ -41,85 +42,69 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/textView7"
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Ingrese contraseña actual:" />
+                android:layout_height="match_parent"
+                android:paddingTop="10dp"
+                app:passwordToggleEnabled="true">
 
-            <EditText
-                android:id="@+id/etContrasenaActual"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Contraseña actual"
-                android:inputType="textPersonName" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tieNuevaContrasenaActualizar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/robotocondensed_regular"
+                    android:hint="Ingrese contraseña nueva"
+                    android:password="true"
+                    android:singleLine="false"
+                    android:textSize="20sp" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <TextView
-                android:id="@+id/textView8"
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Ingrese nueva contraseña:" />
+                android:layout_height="match_parent"
+                android:paddingTop="10dp"
+                app:passwordToggleEnabled="true">
 
-            <EditText
-                android:id="@+id/editTextTextPersonName3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Contraseña nueva"
-                android:inputType="textPersonName" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tieVerificarContrasenaActualizar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/robotocondensed_regular"
+                    android:hint="Vuelva a ingresar contraseña"
+                    android:password="true"
+                    android:singleLine="false"
+                    android:textSize="20sp" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <TextView
-                android:id="@+id/textView10"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Vuelva a ingresar contraseña nueva" />
-
-            <EditText
-                android:id="@+id/editTextTextPersonName4"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Verifique contraseña nueva"
-                android:inputType="textPersonName" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:padding="10dp">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="end"
-                android:orientation="vertical"
-                android:paddingEnd="15dp">
-
-                <Button
-                    android:id="@+id/btnNuevaContrasena"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:backgroundTint="#4CAF50"
-                    android:onClick="actualizarContrasena"
-                    android:text="Actualizar" />
-            </LinearLayout>
-
-            <LinearLayout
+            <Button
+                android:id="@+id/btnNuevaContrasena"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:backgroundTint="#C32525"
+                android:fontFamily="@font/robotocondensed_regular"
+                android:onClick="actualizarContrasena"
+                android:text="Actualizar"
+                android:textSize="20sp" />
 
-                <Button
-                    android:id="@+id/btnCancelarCambioContrasena"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:onClick="cancelarCambioContrasena"
-                    android:text="Cancelar" />
-            </LinearLayout>
+            <Button
+                android:id="@+id/btnCancelarCambioContrasena"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:backgroundTint="#F44336"
+                android:fontFamily="@font/robotocondensed_regular"
+                android:onClick="cancelarCambioContrasena"
+                android:text="Cancelar"
+                android:textSize="20sp" />
 
         </LinearLayout>
     </LinearLayout>

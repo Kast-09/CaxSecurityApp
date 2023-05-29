@@ -28,7 +28,7 @@ import java.util.Map;
 
 public class EnviarSolicitudAmistadFragment extends Fragment {
 
-    public String email = "", idUsuario = "", nombreUsuario = "";
+    public String email = "", idUsuario = "", nombreUsuario = "", fotoUsuario = "";
     TextInputEditText tieCorreoSolicitudAmistad;
     DatabaseReference mRootReference;
     Button btnEnviarSolicitudAmistad;
@@ -65,6 +65,7 @@ public class EnviarSolicitudAmistadFragment extends Fragment {
 
         Map<String, Object> datosSolicitud = new HashMap<>();
         datosSolicitud.put("idUsuarioRemitente", idUsuario);
+        datosSolicitud.put("fotoUsuario", fotoUsuario);
         datosSolicitud.put("nombreUsuarioRemitente", nombreUsuario);
         datosSolicitud.put("correoUsuarioReceptor", correoAmigo);
 
@@ -90,6 +91,7 @@ public class EnviarSolicitudAmistadFragment extends Fragment {
                             if(user.correo.equals(email)){
                                 idUsuario = snapshot.getKey();
                                 nombreUsuario = user.nombre;
+                                fotoUsuario = user.photo;
                             }
                         }
 
