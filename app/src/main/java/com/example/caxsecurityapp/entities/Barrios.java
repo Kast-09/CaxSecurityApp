@@ -1,25 +1,32 @@
 package com.example.caxsecurityapp.entities;
 
 public class Barrios {
-    public String nombreBarrio;
-    public String estadoBarrio;
+    public String id;
+    public String nombre;
 
-    public Barrios() {
+    public Barrios(String id, String nombre) {
+        this.id = id;
+        this.nombre = nombre;
     }
 
-    public String getNombreBarrio() {
-        return nombreBarrio;
+    public String getId() {
+        return id;
     }
 
-    public void setNombreBarrio(String nombreBarrio) {
-        this.nombreBarrio = nombreBarrio;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public String getEstadoBarrio() {
-        return estadoBarrio;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setEstadoBarrio(String estadoBarrio) {
-        this.estadoBarrio = estadoBarrio;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    @Override
+    public String toString() {
+        return nombre;
     }
 }

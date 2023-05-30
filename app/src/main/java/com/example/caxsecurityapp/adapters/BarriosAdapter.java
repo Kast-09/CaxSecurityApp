@@ -33,11 +33,11 @@ public class BarriosAdapter extends RecyclerView.Adapter {
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        TextView tvNombreBarrio = holder.itemView.findViewById(R.id.tvNombreBarrio);
+        /*TextView tvNombreBarrio = holder.itemView.findViewById(R.id.tvNombreBarrio);
         tvNombreBarrio.setText(data.get(position).nombreBarrio);
 
         TextView tvDescripcionBarrio = holder.itemView.findViewById(R.id.tvDescripcionBarrio);
-        tvDescripcionBarrio.setText(data.get(position).estadoBarrio);
+        tvDescripcionBarrio.setText(data.get(position).estadoBarrio);*/
     }
 
     @Override

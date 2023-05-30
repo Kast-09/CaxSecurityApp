@@ -91,7 +91,9 @@ public class RegistrarseActivity extends AppCompatActivity {
                             Intent intent = new Intent(getApplicationContext(), IniciarSesionActivity.class);
                             Toast.makeText(getApplicationContext(), "Registro Exitoso", Toast.LENGTH_SHORT).show();
                             finish();
-                            cargarDatosFirebase(nombre, telefono, DNI, correo);
+                            FirebaseUser user = mAuth.getCurrentUser();
+                            String idUser = user.getUid();
+                            cargarDatosFirebase(idUser, nombre, telefono, DNI, correo);
                             startActivity(intent);
                         }
                         else{
@@ -111,14 +113,16 @@ public class RegistrarseActivity extends AppCompatActivity {
 
     }
 
-    private void cargarDatosFirebase(String nombre, String telefono, String DNI, String correo) {
+    private void cargarDatosFirebase(String idUser, String nombre, String telefono, String DNI, String correo) {
         Map<String, Object> datosUsuario = new HashMap<>();
         datosUsuario.put("nombre", nombre);
         datosUsuario.put("telefono", telefono);
         datosUsuario.put("dni", DNI);
         datosUsuario.put("correo", correo);
+        datosUsuario.put("photo", "");
+        datosUsuario.put("rol", "usuario");
 
-        mRootReference.child("Usuario").push().setValue(datosUsuario);
+        mRootReference.child("Usuario/"+idUser).setValue(datosUsuario);
     }
 
     private void dameToastdeerror(String error) {

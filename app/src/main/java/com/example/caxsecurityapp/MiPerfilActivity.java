@@ -52,7 +52,6 @@ import java.util.Map;
 public class MiPerfilActivity extends AppCompatActivity {
 
     DatabaseReference mRootReference;
-    private String email;
     private TextView tvNombreUsuarioPerfil, tvDNIUsuarioPerfil, tvTelefonoUsuarioPerfil, tvCorreoUsuarioPerfil;
     private ImageButton btnEditNombreUsuario, btnEditDNIUsuario, btnEditTelefonoUsuario;
     private ImageView ivFotoPerfil;
@@ -66,13 +65,11 @@ public class MiPerfilActivity extends AppCompatActivity {
 
     private Uri imageUrl;
     String photo = "photo";
-    String idUser, linkFoto, tempNombreFoto = "";
+    String linkFoto = "", tempNombreFoto = "";
 
     ProgressDialog progressDialog;
 
     private FirebaseAuth mAuth;
-
-    Drawable drawable;
 
    @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,7 +95,6 @@ public class MiPerfilActivity extends AppCompatActivity {
         btnTomarFoto = findViewById(R.id.btnTomarFoto);
         btnDeletePhoto = findViewById(R.id.btnDeletePhoto);
 
-        obtenerCorreoUsuario();
         obtenerDatosUsuario();
 
         btnEditNombreUsuario.setOnClickListener(new View.OnClickListener() {
@@ -129,9 +125,13 @@ public class MiPerfilActivity extends AppCompatActivity {
            @Override
            public void onClick(View view) {
                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                   requestPermissions(new String[] {Manifest.permission.WRITE_EXTERNAL_STORAGE}, 101);
                    if(checkSelfPermission(Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED){
-                       abrirCamara();
+                       if(checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED){
+                           abrirCamara();
+                       }
+                       else{
+                           requestPermissions(new String[] {Manifest.permission.WRITE_EXTERNAL_STORAGE}, 101);
+                       }
                    }
                    else {
                        requestPermissions(new String[] {Manifest.permission.CAMERA}, 100);
@@ -163,7 +163,7 @@ public class MiPerfilActivity extends AppCompatActivity {
     }
 
     public void eliminarFotoFirestore(){
-        storageReference.child("fotosPerfil/"+tempNombreFoto).delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+        storageReference.child("fotosPerfil/"+"*photo"+mAuth.getUid()).delete().addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
                 btnDeletePhoto.setEnabled(true);
@@ -174,6 +174,7 @@ public class MiPerfilActivity extends AppCompatActivity {
             @Override
             public void onFailure(@NonNull Exception exception) {
                 Toast.makeText(MiPerfilActivity.this, "Foto no eliminada, ocurrio un error", Toast.LENGTH_LONG).show();
+                progressDialog.dismiss();
             }
         });
     }
@@ -181,8 +182,7 @@ public class MiPerfilActivity extends AppCompatActivity {
     public void eliminarFotoUsuario(){
         Map<String, Object> eliminarFoto = new HashMap<>();
         eliminarFoto.put("photo", "");
-        Log.i("ID", FirebaseAuth.getInstance().getCurrentUser().getUid());
-        mRootReference.child("Usuario").child(idUser).updateChildren(eliminarFoto).addOnSuccessListener(new OnSuccessListener<Void>() {
+        mRootReference.child("Usuario/"+mAuth.getUid()).updateChildren(eliminarFoto).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void unused) {
                 progressDialog.dismiss();
@@ -199,14 +199,6 @@ public class MiPerfilActivity extends AppCompatActivity {
     public void irActualizarContrasena(View view){
         Intent intent = new Intent(getApplicationContext(), ActualizarContrasenaActivity.class);
         startActivity(intent);
-    }
-
-    public void obtenerCorreoUsuario(){
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        if (user != null) {
-            email = user.getEmail();
-            Log.i("ID", email);
-        }
     }
 
     private void uploadPhoto(){
@@ -240,7 +232,7 @@ public class MiPerfilActivity extends AppCompatActivity {
     private void subirPhoto(Uri imageUrl){
        progressDialog.setMessage("Subiendo foto");
        progressDialog.show();
-       String rute_storage_photo = storage_path + "" + photo + "" + mAuth.getUid() + ""+idUser;
+       String rute_storage_photo = storage_path + "" + photo + "" + mAuth.getUid();
        StorageReference reference = storageReference.child(rute_storage_photo);
        reference.putFile(imageUrl).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
            @Override
@@ -254,7 +246,7 @@ public class MiPerfilActivity extends AppCompatActivity {
                             String dowloadUri = uri.toString();
                             HashMap<String,Object> map = new HashMap<>();
                             map.put("photo", dowloadUri);
-                            mRootReference.child("Usuario").child(idUser).updateChildren(map);
+                            mRootReference.child("Usuario/"+mAuth.getUid()).updateChildren(map);
                             Toast.makeText(MiPerfilActivity.this, "Foto actualizada", Toast.LENGTH_SHORT).show();
                             btnDeletePhoto.setEnabled(true);
                             progressDialog.dismiss();
@@ -273,81 +265,51 @@ public class MiPerfilActivity extends AppCompatActivity {
     public void obtenerDatosUsuario(){
         progressDialog.setMessage("Cargando datos usuario");
         progressDialog.show();
-        mRootReference.child("Usuario").addValueEventListener(new ValueEventListener() {
+        mRootReference.child("Usuario/"+mAuth.getUid()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for(final DataSnapshot snapshot: dataSnapshot.getChildren()){
-                    mRootReference.child("Usuario").child(snapshot.getKey()).addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            Usuario user = snapshot.getValue(Usuario.class);
-                            if(user.correo.equalsIgnoreCase(email)){
-                                tvNombreUsuarioPerfil.setText(user.nombre);
-                                tvDNIUsuarioPerfil.setText(user.dni);
-                                tvTelefonoUsuarioPerfil.setText(user.telefono);
-                                tvCorreoUsuarioPerfil.setText(user.correo);
-                                linkFoto = user.photo;
-                                if(linkFoto.length()<=0){
-                                    btnDeletePhoto.setEnabled(false);
-                                }
-                                else{
-                                    btnDeletePhoto.setEnabled(true);
-                                    obtenerNombreImagen(linkFoto);
-                                }
-                                idUser = snapshot.getKey();
-                                try {
-                                    if(!linkFoto.equals("")){
-                                        Toast toast = Toast.makeText(getApplicationContext(), "Cargando foto", Toast.LENGTH_LONG);
-                                        toast.setGravity(Gravity.TOP, 0, 200);
-                                        toast.show();
-                                        Picasso.with(MiPerfilActivity.this)
-                                                .load(linkFoto)
-                                                .resize(120, 120)
-                                                .into(ivFotoPerfil);
-                                    }
-                                    else{
-                                        Toast.makeText(getApplicationContext(), "No se tiene una foto de perfil", Toast.LENGTH_LONG).show();
-                                        Picasso.with(MiPerfilActivity.this)
-                                                .load("https://firebasestorage.googleapis.com/v0/b/caxsecurity.appspot.com/o/fotosPerfil%2Fic_user_default.png?alt=media&token=89b7e229-0e17-467a-b94c-287e28347310")
-                                                .resize(120, 120)
-                                                .into(ivFotoPerfil);
-                                    }
-                                }
-                                catch (Exception e){
-                                    Log.v("Error", "e: "+e);
-                                }
-                            }
-                            progressDialog.dismiss();
-                        }
-
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
-                            progressDialog.dismiss();
-                            Toast.makeText(getApplicationContext(), "Error al cargar información", Toast.LENGTH_LONG).show();
-                        }
-                    });
+                Usuario user = dataSnapshot.getValue(Usuario.class);
+                tvNombreUsuarioPerfil.setText(user.nombre);
+                tvDNIUsuarioPerfil.setText(user.dni);
+                tvTelefonoUsuarioPerfil.setText(user.telefono);
+                tvCorreoUsuarioPerfil.setText(user.correo);
+                linkFoto = user.photo;
+                if(linkFoto.length()<=0){
+                    btnDeletePhoto.setEnabled(false);
                 }
+                else{
+                    btnDeletePhoto.setEnabled(true);
+                }
+                try {
+                    if(!linkFoto.equals("")){
+                        Toast toast = Toast.makeText(getApplicationContext(), "Cargando foto", Toast.LENGTH_LONG);
+                        toast.setGravity(Gravity.TOP, 0, 200);
+                        toast.show();
+                        Picasso.with(MiPerfilActivity.this)
+                                .load(linkFoto)
+                                .resize(120, 120)
+                                .into(ivFotoPerfil);
+                    }
+                    else{
+                        Toast.makeText(getApplicationContext(), "No se tiene una foto de perfil", Toast.LENGTH_LONG).show();
+                        Picasso.with(MiPerfilActivity.this)
+                                .load("https://firebasestorage.googleapis.com/v0/b/caxsecurity.appspot.com/o/fotosPerfil%2Fic_user_default.png?alt=media&token=89b7e229-0e17-467a-b94c-287e28347310")
+                                .resize(120, 120)
+                                .into(ivFotoPerfil);
+                    }
+                }
+                catch (Exception e){
+                    Log.v("Error", "e: "+e);
+                }
+                progressDialog.dismiss();
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(getApplicationContext(), "Error con la base de datos, contactese con soporte técnico", Toast.LENGTH_LONG).show();
                 progressDialog.dismiss();
             }
         });
-    }
-
-    public void obtenerNombreImagen(String link){
-        char[] chars = new char[linkFoto.length()];
-        int cont = 0;
-        for(int i = 84;i<linkFoto.length();i++){
-            if(linkFoto.charAt(i) != 63){
-                tempNombreFoto += linkFoto.charAt(i);
-                cont++;
-            }
-            else {
-                break;
-            }
-        }
     }
 
     @Override

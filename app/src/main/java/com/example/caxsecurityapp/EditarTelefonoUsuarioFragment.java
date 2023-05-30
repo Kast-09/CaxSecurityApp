@@ -31,10 +31,10 @@ import java.util.Map;
 
 public class EditarTelefonoUsuarioFragment extends DialogFragment {
 
-    String email, idUser;
     TextInputEditText tieTelefonoEditarUsuario;
     DatabaseReference mRootReference;
     Button btnEditTelefono;
+    private FirebaseAuth mAuth;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -53,11 +53,11 @@ public class EditarTelefonoUsuarioFragment extends DialogFragment {
         super.onViewCreated(view, savedInstanceState);
 
         mRootReference = FirebaseDatabase.getInstance().getReference();
+        mAuth = FirebaseAuth.getInstance();
 
         tieTelefonoEditarUsuario = view.findViewById(R.id.tieTelefonoEditarUsuario);
         btnEditTelefono = view.findViewById(R.id.btnEditTelefono);
 
-        obtenerCorreoUsuario();
         obtenerDatosUsuario();
 
         btnEditTelefono.setOnClickListener(new View.OnClickListener() {
@@ -66,7 +66,7 @@ public class EditarTelefonoUsuarioFragment extends DialogFragment {
                 Map<String, Object> actualizarNombre = new HashMap<>();
                 actualizarNombre.put("telefono", tieTelefonoEditarUsuario.getText().toString());
                 Log.i("ID", FirebaseAuth.getInstance().getCurrentUser().getUid());
-                mRootReference.child("Usuario").child(idUser).updateChildren(actualizarNombre).addOnSuccessListener(new OnSuccessListener<Void>() {
+                mRootReference.child("Usuario/"+mAuth.getUid()).updateChildren(actualizarNombre).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void unused) {
                         Toast.makeText(getContext(), "Número de teléfono de usuario actualizado", Toast.LENGTH_LONG).show();
@@ -83,36 +83,12 @@ public class EditarTelefonoUsuarioFragment extends DialogFragment {
         });
     }
 
-    public void obtenerCorreoUsuario(){
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        if (user != null) {
-            email = user.getEmail();
-            Log.i("ID", email);
-        }
-    }
-
     public void obtenerDatosUsuario(){
-        mRootReference.child("Usuario").addValueEventListener(new ValueEventListener() {
+        mRootReference.child("Usuario/"+mAuth.getUid()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for(final DataSnapshot snapshot: dataSnapshot.getChildren()){
-                    mRootReference.child("Usuario").child(snapshot.getKey()).addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            Usuario user = snapshot.getValue(Usuario.class);
-                            if(user.correo.equalsIgnoreCase(email)){
-                                tieTelefonoEditarUsuario.setText(user.telefono);
-                                idUser = snapshot.getKey();
-                            }
-                            Log.i("ID", snapshot.getKey());
-                        }
-
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
-
-                        }
-                    });
-                }
+                Usuario user = dataSnapshot.getValue(Usuario.class);
+                tieTelefonoEditarUsuario.setText(user.telefono);
             }
 
             @Override

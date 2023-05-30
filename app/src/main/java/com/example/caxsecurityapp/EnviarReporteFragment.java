@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.RadioButton;
@@ -19,6 +20,7 @@ import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.caxsecurityapp.entities.Barrios;
 import com.example.caxsecurityapp.entities.Usuario;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
@@ -31,8 +33,12 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+
+import kotlin.collections.ArrayDeque;
 
 public class EnviarReporteFragment extends Fragment {
 
@@ -40,8 +46,8 @@ public class EnviarReporteFragment extends Fragment {
     private RadioButton rbReporteAnonimo, rbReportePublico;
     private TextInputEditText tieDescripcionReporte, tieDireccionReporte, tieReferenciaReporte;
     DatabaseReference mRootReference;
-    public String email = "", idUsuario = "";
-    private Button btnSendReport;
+    public String email = "", idUsuario = "", idBarrio = "";
+    private Button btnSendReport, btnTomarFotoRep, btnGrabarVideoRep, btnSeleccionarArchivoRep, btnEliminarArchivoRep;
 
     @Override
     public void onCreate(@NonNull Bundle savedInstanceState) {
@@ -67,6 +73,10 @@ public class EnviarReporteFragment extends Fragment {
         rbReportePublico = view.findViewById(R.id.rbReportePublico);
         mRootReference = FirebaseDatabase.getInstance().getReference();
         btnSendReport = view.findViewById(R.id.btnSendReport);
+        btnTomarFotoRep = view.findViewById(R.id.btnTomarFotoRep);
+        btnGrabarVideoRep = view.findViewById(R.id.btnGrabarVideoRep);
+        btnSeleccionarArchivoRep = view.findViewById(R.id.btnSeleccionarArchivoRep);
+        btnEliminarArchivoRep = view.findViewById(R.id.btnEliminarArchivoRep);
 
         obtenerCorreoUsuario();
         obtenerDatosUsuario();
@@ -75,9 +85,38 @@ public class EnviarReporteFragment extends Fragment {
                 R.array.combo_tipos, android.R.layout.simple_spinner_dropdown_item);
         spTipoReporte.setAdapter(adapterspTipoReporte);
 
-        ArrayAdapter<CharSequence> adapterspNombreBarrio = ArrayAdapter.createFromResource(this.getContext(),
+        obtenerBarrios();
+        /*ArrayAdapter<CharSequence> adapterspNombreBarrio = ArrayAdapter.createFromResource(this.getContext(),
                 R.array.combo_barrios, android.R.layout.simple_spinner_dropdown_item);
-        spNombreBarrio.setAdapter(adapterspNombreBarrio);
+        spNombreBarrio.setAdapter(adapterspNombreBarrio);*/
+
+        btnTomarFotoRep.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
+        btnGrabarVideoRep.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
+        btnSeleccionarArchivoRep.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
+        btnEliminarArchivoRep.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
 
         btnSendReport.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -91,29 +130,63 @@ public class EnviarReporteFragment extends Fragment {
                 }
                 String reporte = spTipoReporte.getSelectedItem().toString();
                 String descripcionReporte = tieDescripcionReporte.getText().toString();
-                String nombreBarrio = spNombreBarrio.getSelectedItem().toString();
                 String direccion = tieDireccionReporte.getText().toString();
                 String referencia = tieReferenciaReporte.getText().toString();
 
-                cargarDatosFirebase(tipoReporte, reporte, descripcionReporte, nombreBarrio, direccion, referencia);
+                cargarDatosFirebase(tipoReporte, reporte, descripcionReporte, direccion, referencia);
 
                 Toast.makeText(view.getContext(), "Reporte enviado", Toast.LENGTH_SHORT).show();
             }
         });
     }
 
-    private void cargarDatosFirebase(String tipoReporte, String reporte, String descripcionReporte, String nombreBarrio, String direccion, String referencia) {
+    public void obtenerBarrios(){
+        final List<Barrios> barrios = new ArrayList<>();
+        mRootReference.child("Barrios").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(snapshot.exists()){
+                    for(DataSnapshot ds: snapshot.getChildren()){
+                        String id = ds.getKey();
+                        String nombre = ds.child("nombre").getValue().toString();
+                        barrios.add(new Barrios(id, nombre));
+                    }
+
+                    ArrayAdapter<Barrios> arrayAdapter = new ArrayAdapter<>(EnviarReporteFragment.this.getContext(), android.R.layout.simple_spinner_dropdown_item, barrios);
+                    spNombreBarrio.setAdapter(arrayAdapter);
+                    spNombreBarrio.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                        @Override
+                        public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                            idBarrio = adapterView.getItemAtPosition(i).toString();
+                        }
+
+                        @Override
+                        public void onNothingSelected(AdapterView<?> adapterView) {
+
+                        }
+                    });
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+
+    private void cargarDatosFirebase(String tipoReporte, String reporte, String descripcionReporte, String direccion, String referencia) {
 
         Map<String, Object> datosReporte = new HashMap<>();
         datosReporte.put("idUsuario", idUsuario);
         datosReporte.put("tipoReporte", tipoReporte);
         datosReporte.put("reporte", reporte);
         datosReporte.put("descripcionReporte", descripcionReporte);
-        datosReporte.put("nombreBarrio", nombreBarrio);
+        datosReporte.put("nombreBarrio", idBarrio);
         datosReporte.put("referencia", referencia);
         datosReporte.put("estado", "ENVIADO");
 
-        mRootReference.child("Reportes").push().setValue(datosReporte);
+        mRootReference.child("Reportes/Usuari1").push().setValue(datosReporte);
     }
 
     public void obtenerCorreoUsuario(){
