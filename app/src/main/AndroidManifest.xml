@@ -23,9 +23,6 @@
             android:name=".NavigationViewReportesActivity"
             android:exported="false" />
         <activity
-            android:name=".NavigationViewAmigosActivity"
-            android:exported="false" />
-        <activity
             android:name=".InicioActivity"
             android:exported="false" />
         <activity
@@ -35,40 +32,10 @@
             android:name=".MapaDeCalorActivity"
             android:exported="false" />
         <activity
-            android:name=".CompartirUbicacionActivity"
-            android:exported="false" />
-        <activity
-            android:name=".SolicitudesAmistadEnviadasActivity"
-            android:exported="false" />
-        <activity
-            android:name=".EnviarSolicitudAmistadActivity"
-            android:exported="false" />
-        <activity
-            android:name=".SolicitudesAmistadActivity"
-            android:exported="false" />
-        <activity
-            android:name=".VerAmigosActivity"
-            android:exported="false" />
-        <activity
-            android:name=".AmigosActivity"
-            android:exported="false" />
-        <activity
             android:name=".MiPerfilActivity"
             android:exported="false" />
         <activity
-            android:name=".RestablecerContrasenaActivity"
-            android:exported="false" />
-        <activity
             android:name=".IngresarCorreoRecuperacionActivity"
-            android:exported="false" />
-        <activity
-            android:name=".CodigoRecuperacionActivity"
-            android:exported="false" />
-        <activity
-            android:name=".HistorialReportesActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ReportesActivity"
             android:exported="false" />
         <activity
             android:name=".RegistrarseActivity"
@@ -83,9 +50,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".MainActivity"
-            android:exported="false" />
     </application>
 
 </manifest>
