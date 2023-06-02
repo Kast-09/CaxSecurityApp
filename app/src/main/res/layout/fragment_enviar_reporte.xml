@@ -164,7 +164,8 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:padding="10dp">
 
                     <LinearLayout
                         android:layout_width="140dp"
@@ -173,11 +174,18 @@
                         android:orientation="vertical">
 
                         <ImageView
-                            android:id="@+id/imageView3"
+                            android:id="@+id/ivImagenReporte"
                             android:layout_width="120dp"
                             android:layout_height="120dp"
                             android:scaleType="centerCrop"
+                            android:visibility="gone"
                             tools:srcCompat="@tools:sample/avatars" />
+
+                        <VideoView
+                            android:id="@+id/vvVideoReporte"
+                            android:layout_width="120dp"
+                            android:layout_height="120dp" />
+
                     </LinearLayout>
 
                     <LinearLayout
@@ -190,7 +198,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:gravity="center_horizontal"
+                            android:gravity="center_horizontal|center_vertical"
                             android:orientation="horizontal">
 
                             <Button
@@ -212,25 +220,46 @@
                                 android:text="Video"
                                 android:textSize="20sp"
                                 app:icon="@drawable/ic_video" />
+
                         </LinearLayout>
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:gravity="center_horizontal"
+                            android:gravity="center_horizontal|center_vertical"
                             android:orientation="horizontal">
 
                             <Button
-                                android:id="@+id/btnSeleccionarArchivoRep"
+                                android:id="@+id/btnSeleccionarFotoRep"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:backgroundTint="#4CAF50"
                                 android:fontFamily="@font/robotocondensed_regular"
-                                android:text="Seleccionar"
+                                android:text="Foto"
                                 android:textSize="20sp"
                                 app:icon="@drawable/ic_attach_file" />
+
+                            <Button
+                                android:id="@+id/btnSeleccionarVideoRep"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:backgroundTint="#3F51B5"
+                                android:fontFamily="@font/robotocondensed_regular"
+                                android:text="Video"
+                                android:textSize="20sp"
+                                app:icon="@drawable/ic_attach_file" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center_horizontal|center_vertical"
+                            android:orientation="horizontal">
 
                             <Button
                                 android:id="@+id/btnEliminarArchivoRep"

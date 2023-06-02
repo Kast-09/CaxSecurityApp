@@ -9,6 +9,9 @@ public class Barrios {
         this.nombre = nombre;
     }
 
+    public Barrios() {
+    }
+
     public String getId() {
         return id;
     }

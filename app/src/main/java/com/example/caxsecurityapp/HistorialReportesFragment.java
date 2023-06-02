@@ -29,10 +29,10 @@ import java.util.List;
 
 
 public class HistorialReportesFragment extends Fragment {
-    public String email = "", idUsuario = "";
     DatabaseReference mRootReference;
     List<Reportes> dataReportes = new ArrayList<>();
     RecyclerView rvHistorialReportes;
+    private FirebaseAuth mAuth;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -47,20 +47,20 @@ public class HistorialReportesFragment extends Fragment {
         mRootReference = FirebaseDatabase.getInstance().getReference();
         rvHistorialReportes = view.findViewById(R.id.rvHistorialReportes);
 
-        obtenerCorreoUsuario();
-        obtenerDatosUsuario();
+        dataReportes.clear();
+
+        mAuth = FirebaseAuth.getInstance();
+
         obtenerReportesUsuario();
     }
 
     public void obtenerReportesUsuario(){
-        mRootReference.child("Reportes").addValueEventListener(new ValueEventListener() {
+        mRootReference.child("Reportes/"+mAuth.getUid()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for(DataSnapshot snapshot : dataSnapshot.getChildren()){
                     Reportes reportes = snapshot.getValue(Reportes.class);
-                    if(reportes.idUsuario.equals(idUsuario)){
-                        dataReportes.add(reportes);
-                    }
+                    dataReportes.add(reportes);
                 }
 
                 rvHistorialReportes.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -73,42 +73,4 @@ public class HistorialReportesFragment extends Fragment {
             }
         });
     }
-
-    public void obtenerCorreoUsuario(){
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        if (user != null) {
-            email = user.getEmail();
-        }
-    }
-
-    public void obtenerDatosUsuario(){
-        mRootReference.child("Usuario").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for(final DataSnapshot snapshot: dataSnapshot.getChildren()){
-                    mRootReference.child("Usuario").child(snapshot.getKey()).addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            Usuario user = snapshot.getValue(Usuario.class);
-                            if(user.correo.equals(email)){
-                                idUsuario = snapshot.getKey().toString();
-                            }
-                        }
-
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
-
-                        }
-                    });
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-    }
-
-
 }

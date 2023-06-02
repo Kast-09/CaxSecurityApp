@@ -143,7 +143,14 @@ public class MiPerfilActivity extends AppCompatActivity {
        brnSeleccionarFoto.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View view) {
-                uploadPhoto();
+               if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                   if(checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED){
+                       uploadPhoto();
+                   }
+                   else {
+                       requestPermissions(new String[] {Manifest.permission.READ_EXTERNAL_STORAGE}, 102);
+                   }
+               }
            }
        });
 
@@ -257,6 +264,7 @@ public class MiPerfilActivity extends AppCompatActivity {
        }).addOnFailureListener(new OnFailureListener() {
            @Override
            public void onFailure(@NonNull Exception e) {
+               progressDialog.dismiss();
                Toast.makeText(MiPerfilActivity.this, "Error al cargar foto", Toast.LENGTH_SHORT).show();
            }
        });
@@ -292,10 +300,7 @@ public class MiPerfilActivity extends AppCompatActivity {
                     }
                     else{
                         Toast.makeText(getApplicationContext(), "No se tiene una foto de perfil", Toast.LENGTH_LONG).show();
-                        Picasso.with(MiPerfilActivity.this)
-                                .load("https://firebasestorage.googleapis.com/v0/b/caxsecurity.appspot.com/o/fotosPerfil%2Fic_user_default.png?alt=media&token=89b7e229-0e17-467a-b94c-287e28347310")
-                                .resize(120, 120)
-                                .into(ivFotoPerfil);
+                        ivFotoPerfil.setImageResource(R.drawable.ic_perfil);
                     }
                 }
                 catch (Exception e){

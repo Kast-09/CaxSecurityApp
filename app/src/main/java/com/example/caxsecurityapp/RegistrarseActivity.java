@@ -121,6 +121,7 @@ public class RegistrarseActivity extends AppCompatActivity {
         datosUsuario.put("correo", correo);
         datosUsuario.put("photo", "");
         datosUsuario.put("rol", "usuario");
+        datosUsuario.put("baneado", 0);
 
         mRootReference.child("Usuario/"+idUser).setValue(datosUsuario);
     }
