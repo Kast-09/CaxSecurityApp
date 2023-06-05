@@ -10,6 +10,7 @@ import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -38,6 +39,8 @@ public class RegistrarseActivity extends AppCompatActivity {
 
     DatabaseReference mRootReference;
 
+    CheckBox cxbTerminosCondiciones, cxbPoliticaPrivacidad;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,6 +50,7 @@ public class RegistrarseActivity extends AppCompatActivity {
         mRootReference = FirebaseDatabase.getInstance().getReference();
 
         awesomeValidation = new AwesomeValidation(ValidationStyle.BASIC);
+        awesomeValidation.addValidation(this, R.id.tieNombreRegistro, ".{8,}", R.string.invalid_name);
         awesomeValidation.addValidation(this, R.id.tieNumeroTelefonoRegistro, ".{9,}", R.string.invalid_phone);
         awesomeValidation.addValidation(this, R.id.tieDNIRegistro, ".{8,}", R.string.invalid_dni);
         awesomeValidation.addValidation(this, R.id.tieCorreoRegistro, Patterns.EMAIL_ADDRESS, R.string.invalid_mail);
@@ -59,7 +63,19 @@ public class RegistrarseActivity extends AppCompatActivity {
         tieCorreoRegistro = findViewById(R.id.tieCorreoRegistro);
         tieContrasenaRegistro = findViewById(R.id.tieContrasenaRegistro);
         tieContrasenaVerificarRegistro = findViewById(R.id.tieContrasenaVerificarRegistro);
+        cxbTerminosCondiciones = findViewById(R.id.cxbTerminosCondiciones);
+        cxbPoliticaPrivacidad = findViewById(R.id.cxbPoliticaPrivacidad);
 
+    }
+
+    public void verTerminosCondiciones(View view){
+        Intent intent = new Intent(getApplicationContext(), TerminosYCondicionesActivity.class);
+        startActivity(intent);
+    }
+
+    public void verPoliticaPrivacidad(View view){
+        Intent intent = new Intent(getApplicationContext(), PoliticaPrivacidadActivity.class);
+        startActivity(intent);
     }
 
     @Override
@@ -82,33 +98,38 @@ public class RegistrarseActivity extends AppCompatActivity {
         String contrasena = tieContrasenaRegistro.getText().toString();
         String contrasenaValidar = tieContrasenaVerificarRegistro.getText().toString();
 
-        if(awesomeValidation.validate()){
-            if(contrasena.trim().equals(contrasenaValidar.trim())){
-                mAuth.createUserWithEmailAndPassword(correo, contrasena).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(task.isSuccessful()){
-                            Intent intent = new Intent(getApplicationContext(), IniciarSesionActivity.class);
-                            Toast.makeText(getApplicationContext(), "Registro Exitoso", Toast.LENGTH_SHORT).show();
-                            finish();
-                            FirebaseUser user = mAuth.getCurrentUser();
-                            String idUser = user.getUid();
-                            cargarDatosFirebase(idUser, nombre, telefono, DNI, correo);
-                            startActivity(intent);
+        if(cxbPoliticaPrivacidad.isChecked() && cxbTerminosCondiciones.isChecked()){
+            if(awesomeValidation.validate()){
+                if(contrasena.trim().equals(contrasenaValidar.trim())){
+                    mAuth.createUserWithEmailAndPassword(correo, contrasena).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if(task.isSuccessful()){
+                                Intent intent = new Intent(getApplicationContext(), IniciarSesionActivity.class);
+                                Toast.makeText(getApplicationContext(), "Registro Exitoso", Toast.LENGTH_SHORT).show();
+                                finish();
+                                FirebaseUser user = mAuth.getCurrentUser();
+                                String idUser = user.getUid();
+                                cargarDatosFirebase(idUser, nombre, telefono, DNI, correo);
+                                startActivity(intent);
+                            }
+                            else{
+                                String errorCode = ((FirebaseAuthException) task.getException()).getErrorCode();
+                                dameToastdeerror(errorCode);
+                            }
                         }
-                        else{
-                            String errorCode = ((FirebaseAuthException) task.getException()).getErrorCode();
-                            dameToastdeerror(errorCode);
-                        }
-                    }
-                });
+                    });
+                }
+                else {
+                    Toast.makeText(this, "Las Contraseñas no coinciden", Toast.LENGTH_SHORT).show();
+                }
             }
             else {
-                Toast.makeText(this, "Las Contraseñas no coinciden", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Completa los campos de manera correcta", Toast.LENGTH_SHORT).show();
             }
         }
         else {
-            Toast.makeText(this, "Completa los campos de manera correcta", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Debe aceptar nuestro terminos y condiciones y nuestra política de privacidad ", Toast.LENGTH_SHORT).show();
         }
 
     }

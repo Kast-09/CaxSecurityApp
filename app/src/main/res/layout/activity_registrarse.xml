@@ -27,7 +27,8 @@
       <LinearLayout
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
-          android:orientation="vertical" >
+          android:gravity="center_horizontal|center_vertical"
+          android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -62,7 +63,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/robotocondensed_regular"
-                android:hint="Nombre Completo"
+                android:hint="Nombre Completo (*Obligatorio)"
                 android:inputType="textPersonName"
                 android:textSize="24sp" />
           </com.google.android.material.textfield.TextInputLayout>
@@ -77,7 +78,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/robotocondensed_regular"
-                android:hint="Número de teléfono"
+                android:hint="Número de teléfono (*Obligatorio)"
                 android:inputType="phone"
                 android:textSize="24sp" />
           </com.google.android.material.textfield.TextInputLayout>
@@ -92,7 +93,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/robotocondensed_regular"
-                android:hint="Número de DNI"
+                android:hint="Número de DNI (*Obligatorio)"
                 android:inputType="phone"
                 android:textSize="24sp" />
           </com.google.android.material.textfield.TextInputLayout>
@@ -107,7 +108,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/robotocondensed_regular"
-                android:hint="Correo"
+                android:hint="Correo (*Obligatorio)"
                 android:inputType="textEmailAddress"
                 android:textSize="24sp" />
           </com.google.android.material.textfield.TextInputLayout>
@@ -124,7 +125,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/robotocondensed_regular"
-                android:hint="Contraseña"
+                android:hint="Contraseña (*Obligatorio - Mínimo 8 caracteres)"
                 android:password="true"
                 android:singleLine="false"
                 android:textSize="24sp" />
@@ -142,11 +143,29 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/robotocondensed_regular"
-                android:hint="Verifica contrasena"
+                android:hint="Verifica contrasena (*Obligatorio - Mínimo 8 caracteres)"
                 android:password="true"
                 android:singleLine="false"
                 android:textSize="24sp" />
           </com.google.android.material.textfield.TextInputLayout>
+
+          <CheckBox
+              android:id="@+id/cxbTerminosCondiciones"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:fontFamily="@font/robotocondensed_regular"
+              android:onClick="verTerminosCondiciones"
+              android:text="Acepto Terminos y Condiciones"
+              android:textSize="18dp" />
+
+          <CheckBox
+              android:id="@+id/cxbPoliticaPrivacidad"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:fontFamily="@font/robotocondensed_regular"
+              android:onClick="verPoliticaPrivacidad"
+              android:text="Acepto Politicas de Privacidad"
+              android:textSize="18dp" />
 
         </LinearLayout>
 

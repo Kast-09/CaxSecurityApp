@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PoliticaPrivacidadActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="10dp" >
+
+            <TextView
+                android:id="@+id/textView22"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/robotocondensed_regular"
+                android:text="POLÍTICA DE PRIVACIDAD DE CAXSECURITY"
+                android:textAlignment="center"
+                android:textSize="40dp" />
+
+            <TextView
+                android:id="@+id/textView27"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/robotocondensed_regular"
+                android:paddingTop="10dp"
+                android:text="I. Información que recopilamos"
+                android:textAlignment="viewStart"
+                android:textSize="24dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView28"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/robotocondensed_regular"
+                android:paddingTop="10dp"
+                android:text="1.1.	Información personal: Podemos recopilar información personal que tú proporcionas directamente al utilizar nuestra aplicación, como tu nombre, dirección de correo electrónico, número de teléfono y ubicación geográfica.
+                        \n1.2.	Información del dispositivo: Podemos recopilar información sobre tu dispositivo móvil, incluyendo el modelo, sistema operativo, identificadores únicos y configuraciones de red.
+                        \n1.3.	Información de uso: Podemos recopilar información sobre tu interacción con la aplicación, como las funcionalidades utilizadas, las páginas visitadas, las acciones realizadas y los datos de rendimiento."
+                android:textAlignment="viewStart"
+                android:textSize="20dp" />
+
+            <TextView
+                android:id="@+id/textView25"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/robotocondensed_regular"
+                android:paddingTop="10dp"
+                android:text="II. Uso de la información"
+                android:textAlignment="viewStart"
+                android:textSize="24dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView26"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/robotocondensed_regular"
+                android:paddingTop="10dp"
+                android:text="2.1.	Utilizamos la información recopilada para brindarte y mejorar nuestros servicios, incluyendo:
+                        \n•	Proporcionar alertas e información relacionada con la seguridad ciudadana.
+                        \n•	Analizar y mejorar el rendimiento y la usabilidad de la aplicación.
+                        \n•	Personalizar tu experiencia dentro de la aplicación.
+                        \n•	Enviar actualizaciones y notificaciones relevantes.
+                        \n2.2.	Podemos utilizar información no personal identificable para fines estadísticos y de investigación."
+                android:textAlignment="viewStart"
+                android:textSize="20dp" />
+
+            <TextView
+                android:id="@+id/textView23"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/robotocondensed_regular"
+                android:paddingTop="10dp"
+                android:text="III. Protección de la información"
+                android:textAlignment="viewStart"
+                android:textSize="24dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView24"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/robotocondensed_regular"
+                android:paddingTop="10dp"
+                android:text="3.1.	Nos comprometemos a proteger la información personal de los usuarios y utilizamos medidas de seguridad adecuadas para prevenir el acceso no autorizado, la divulgación o la modificación de dicha información.
+                        \n3.2.	Sin embargo, debes tener en cuenta que ninguna transmisión de datos a través de Internet o almacenamiento electrónico puede garantizar una seguridad absoluta. Por lo tanto, no podemos garantizar la seguridad completa de tu información."
+                android:textAlignment="viewStart"
+                android:textSize="20dp" />
+
+            <TextView
+                android:id="@+id/textView12"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/robotocondensed_regular"
+                android:paddingTop="10dp"
+                android:text="IV. Compartir información"
+                android:textAlignment="viewStart"
+                android:textSize="24dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView13"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/robotocondensed_regular"
+                android:paddingTop="10dp"
+                android:text="4.1.	No compartimos tu información personal con terceros sin tu consentimiento, excepto en las siguientes circunstancias:
+                    \n•	Cuando sea necesario para cumplir con la ley, regulación o proceso legal.
+                    \n•	Para proteger nuestros derechos, propiedad o seguridad, así como la de nuestros usuarios u otros.
+                    \n•	En caso de fusión, adquisición o venta de activos, donde la información personal pueda ser transferida como parte de los activos.
+                    \n4.2.	Podemos compartir información no personal identificable de forma agregada o anonimizada con terceros para fines de análisis, investigación o marketing."
+                android:textAlignment="viewStart"
+                android:textSize="20dp" />
+
+            <TextView
+                android:id="@+id/textView14"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/robotocondensed_regular"
+                android:paddingTop="10dp"
+                android:text="V. Enlaces a otros sitios web"
+                android:textAlignment="viewStart"
+                android:textSize="24dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView15"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/robotocondensed_regular"
+                android:paddingTop="10dp"
+                android:text="5.1.	Nuestra aplicación puede contener enlaces a sitios web de terceros. No nos hacemos responsables de las prácticas de privacidad o el contenido de estos sitios web. Te recomendamos leer las políticas de privacidad de estos sitios antes de proporcionar cualquier información personal."
+                android:textAlignment="viewStart"
+                android:textSize="20dp" />
+
+            <TextView
+                android:id="@+id/textView16"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/robotocondensed_regular"
+                android:paddingTop="10dp"
+                android:text="VI. Menores de edad"
+                android:textAlignment="viewStart"
+                android:textSize="24dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView17"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/robotocondensed_regular"
+                android:paddingTop="10dp"
+                android:text="6.1. Reconocemos que nuestra aplicación puede ser utilizada por personas menores de edad. Si eres menor de edad, asegúrate de obtener el consentimiento de tus padres o tutores legales antes de utilizar nuestra aplicación y proporcionarnos cualquier información personal.
+                            \n6.2. Al utilizar nuestra aplicación, confirmas que tienes el consentimiento de tus padres o tutores legales y que comprendes y aceptas los términos de esta política de privacidad.
+                            \n6.3. Recopilamos y procesamos información personal de menores de edad únicamente con el consentimiento verificable de los padres o tutores legales. Si descubrimos que hemos recopilado información personal de un menor sin el consentimiento de sus padres o tutores legales, tomaremos las medidas necesarias para eliminar dicha información de nuestros registros.
+                            \n6.4. Al utilizar la aplicación, los padres o tutores legales de los menores de edad son responsables de supervisar su uso y proporcionar la orientación adecuada para el manejo de la información personal y la interacción en línea."
+                android:textAlignment="viewStart"
+                android:textSize="20dp" />
+
+            <TextView
+                android:id="@+id/textView18"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/robotocondensed_regular"
+                android:paddingTop="10dp"
+                android:text="VII. Cambios en la Política de Privacidad"
+                android:textAlignment="viewStart"
+                android:textSize="24dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView19"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/robotocondensed_regular"
+                android:paddingTop="10dp"
+                android:text="7.1.	Nos reservamos el derecho de actualizar o modificar esta Política de Privacidad en cualquier momento. Te notificaremos cualquier cambio importante mediante una notificación en la aplicación o por otros medios. Se te recomienda revisar periódicamente esta Política de Privacidad para estar informado sobre nuestras prácticas de privacidad más recientes."
+                android:textAlignment="viewStart"
+                android:textSize="20dp" />
+
+            <TextView
+                android:id="@+id/textView20"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/robotocondensed_regular"
+                android:paddingTop="15dp"
+                android:text="Si tienes alguna pregunta o inquietud sobre nuestra Política de Privacidad, no dudes en ponerte en contacto con nosotros a través de los canales de soporte proporcionados en la aplicación."
+                android:textAlignment="viewStart"
+                android:textSize="20dp" />
+
+            <TextView
+                android:id="@+id/textView21"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/robotocondensed_regular"
+                android:paddingTop="10dp"
+                android:text="Fecha de entrada en vigencia: [1 de junio del 2023]"
+                android:textAlignment="viewStart"
+                android:textSize="20dp" />
+        </LinearLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

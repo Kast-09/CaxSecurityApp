@@ -207,23 +207,26 @@ public class EnviarReporteFragment extends Fragment {
             public void onClick(View view) {
                 progressDialog.setMessage("Enviando reporte");
                 progressDialog.show();
+                DateFormat dateFormat = new SimpleDateFormat("dd_MM_yyyy");
+                String date = dateFormat.format(Calendar.getInstance().getTime());
+                DateFormat dateFormat2 = new SimpleDateFormat("dd_MM_yyyy_HH_mm_ss");
+                String date2 = dateFormat2.format(Calendar.getInstance().getTime());
+                obtenerEstadoBarrio(date);
                 String reporte = spTipoReporte.getSelectedItem().toString();
                 String descripcionReporte = tieDescripcionReporte.getText().toString();
                 String direccion = tieDireccionReporte.getText().toString();
                 String referencia = tieReferenciaReporte.getText().toString();
                 if(idDelito != "0"){
                     if(idBarrio != "0"){
-                        DateFormat dateFormat = new SimpleDateFormat("dd_MM_yyyy");
-                        String date = dateFormat.format(Calendar.getInstance().getTime());
-                        obtenerEstadoBarrio(date);
                         if(rbReporteAnonimo.isChecked()){
-                            cargarDatosFirebase(reporte, descripcionReporte, direccion, referencia);
+                            cargarDatosFirebase(reporte, descripcionReporte, direccion, referencia, date2);
+                            cargarReferenciaDataReportes(date, date2);
                         }
                         else if(rbReportePublico.isChecked()){
                             int d1 = estadoBarrio.getD1();
                             int d2 = estadoBarrio.getD2();
                             int d3 = estadoBarrio.getD3();
-                            if(estadoBarrio.id != ""){
+                            if(estadoBarrio.getId() != ""){
                                 switch (idDelito){
                                     case "1": d1 += 1; break;
                                     case "2": d2 += 1; break;
@@ -239,8 +242,10 @@ public class EnviarReporteFragment extends Fragment {
                                 }
                                 cargarReporteBarrioFirebase(date, d1, d2 , d3);
                             }
-                            cargarDatosFirebase(reporte, descripcionReporte, direccion, referencia);
+                            cargarDatosFirebase(reporte, descripcionReporte, direccion, referencia, date2);
+                            cargarReferenciaDataReportes(date, date2);
                             estadoBarrio = new EstadoBarrio("",0,0,0);
+                            limpiarFragmente();
                         }
                         else {
                             Toast.makeText(EnviarReporteFragment.this.getContext(), "Debe seleccionar el tipo de reporte", Toast.LENGTH_SHORT).show();
@@ -261,7 +266,20 @@ public class EnviarReporteFragment extends Fragment {
         tieDescripcionReporte.setText("");
         tieDireccionReporte.setText("");
         tieReferenciaReporte.setText("");
+        spTipoReporte.setSelection(0);
+        spNombreBarrio.setSelection(0);
+        rbReporteAnonimo.setSelected(false);
+        rbReportePublico.setSelected(false);
+        limpiarIV();
         estadoBarrio = new EstadoBarrio("",0,0,0);
+    }
+
+    private void cargarReferenciaDataReportes(String date, String idReporte) {
+        Map<String, Object> dataReporte = new HashMap<>();
+        dataReporte.put("idReporte", idReporte);
+        dataReporte.put("idUsuario", mAuth.getUid());
+
+        mRootReference.child("DataReportes/"+date).push().setValue(dataReporte);
     }
 
     private void cargarReporteBarrioFirebase(String date, int d1, int d2, int d3) {
@@ -471,13 +489,10 @@ public class EnviarReporteFragment extends Fragment {
         });
     }
 
-    private void cargarDatosFirebase(String reporte, String descripcionReporte, String direccion, String referencia) {
+    private void cargarDatosFirebase(String reporte, String descripcionReporte, String direccion, String referencia, String date2) {
 
-        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy, hh:mm:ss");
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy, HH:mm:ss");
         String date = dateFormat.format(Calendar.getInstance().getTime());
-
-        DateFormat dateFormat2 = new SimpleDateFormat("dd_MM_yyyy_hh_mm_ss");
-        String date2 = dateFormat2.format(Calendar.getInstance().getTime());
 
         if(multimedia!=null){
             subirDataYMultimedia(date2, reporte, descripcionReporte, direccion, referencia, date);
@@ -495,9 +510,10 @@ public class EnviarReporteFragment extends Fragment {
             datosReporte.put("linkMultimedia", linkMultimedia);
             datosReporte.put("estado", "ENVIADO");
 
-            mRootReference.child("Reportes/"+mAuth.getUid()).push().setValue(datosReporte);
-            progressDialog.dismiss();
+            mRootReference.child("Reportes/"+mAuth.getUid()+"/"+date2).setValue(datosReporte);
             Toast.makeText(EnviarReporteFragment.this.getContext(), "Reporte enviado", Toast.LENGTH_SHORT).show();
+            progressDialog.dismiss();
+
         }
     }
 
@@ -527,7 +543,7 @@ public class EnviarReporteFragment extends Fragment {
                             datosReporte.put("linkMultimedia", linkMultimedia);
                             datosReporte.put("estado", "ENVIADO");
 
-                            mRootReference.child("Reportes/"+mAuth.getUid()).push().setValue(datosReporte);
+                            mRootReference.child("Reportes/"+mAuth.getUid()+"/"+fecha).setValue(datosReporte);
                             Toast.makeText(EnviarReporteFragment.this.getContext(), "Multimedia subido", Toast.LENGTH_SHORT).show();
                             progressDialog.dismiss();
                             Toast.makeText(EnviarReporteFragment.this.getContext(), "Reporte enviado", Toast.LENGTH_SHORT).show();

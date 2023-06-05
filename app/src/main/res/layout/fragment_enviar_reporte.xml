@@ -36,6 +36,14 @@
                 android:paddingTop="10dp">
 
                 <RadioButton
+                    android:id="@+id/rbReportePublico"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/robotocondensed_regular"
+                    android:text="Reporte público"
+                    android:textSize="20sp" />
+
+                <RadioButton
                     android:id="@+id/rbReporteAnonimo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -44,13 +52,6 @@
                     android:text="Reporte anónimo"
                     android:textSize="20sp" />
 
-                <RadioButton
-                    android:id="@+id/rbReportePublico"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/robotocondensed_regular"
-                    android:text="Reporte normal"
-                    android:textSize="20sp" />
             </RadioGroup>
 
             <TextView
