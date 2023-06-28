@@ -63,22 +63,27 @@ public class EditarTelefonoUsuarioFragment extends DialogFragment {
         btnEditTelefono.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Map<String, Object> actualizarNombre = new HashMap<>();
-                actualizarNombre.put("telefono", tieTelefonoEditarUsuario.getText().toString());
-                Log.i("ID", FirebaseAuth.getInstance().getCurrentUser().getUid());
-                mRootReference.child("Usuario/"+mAuth.getUid()).updateChildren(actualizarNombre).addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void unused) {
-                        Toast.makeText(getContext(), "Número de teléfono de usuario actualizado", Toast.LENGTH_LONG).show();
-                        dismiss();
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(getContext(), "No se pudo actualizar el número de teléfono", Toast.LENGTH_LONG).show();
-                        dismiss();
-                    }
-                });
+                if(tieTelefonoEditarUsuario.getText().toString().length() == 9){
+                    Map<String, Object> actualizarNombre = new HashMap<>();
+                    actualizarNombre.put("telefono", tieTelefonoEditarUsuario.getText().toString());
+                    Log.i("ID", FirebaseAuth.getInstance().getCurrentUser().getUid());
+                    mRootReference.child("Usuario/"+mAuth.getUid()).updateChildren(actualizarNombre).addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void unused) {
+                            Toast.makeText(getContext(), "Número de teléfono de usuario actualizado", Toast.LENGTH_LONG).show();
+                            dismiss();
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(getContext(), "No se pudo actualizar el número de teléfono", Toast.LENGTH_LONG).show();
+                            dismiss();
+                        }
+                    });
+                }
+                else{
+                    Toast.makeText(getContext(), "El número de telefóno debe tener 9 dígitos", Toast.LENGTH_LONG).show();
+                }
             }
         });
     }

@@ -5,6 +5,11 @@
     <string name="invalid_phone">Ingrese número de teléfono de 9 dígitos</string>
     <string name="invalid_name">Ingrese su nombre completo</string>
     <string name="invalid_dni">Ingrese número de DNI de 8 dígitos</string>
+    <string name="invalid_descripcion">Ingrese una descripción válida</string>
+    <string name="invalid_direccion">Ingrese una direccion válida</string>
+    <string name="invalid_referencia">Ingrese una referencia válida</string>
+    <string name="invalid_sp_delito">Ingrese un delito válido</string>
+    <string name="invalid_sp_barrio">Ingrese un barrio válido</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

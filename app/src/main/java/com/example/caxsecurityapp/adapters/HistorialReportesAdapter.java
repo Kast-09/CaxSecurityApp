@@ -35,7 +35,7 @@ public class HistorialReportesAdapter extends RecyclerView.Adapter {
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         TextView tvHistorialTipoReporte = holder.itemView.findViewById(R.id.tvHistorialTipoReporte);
-        tvHistorialTipoReporte.setText(data.get(position).reporte);
+        tvHistorialTipoReporte.setText(data.get(position).tipoReporte);
 
         TextView tvHistorialDescripcionReporte = holder.itemView.findViewById(R.id.tvHistorialDescripcionReporte);
         tvHistorialDescripcionReporte.setText(data.get(position).descripcionReporte);

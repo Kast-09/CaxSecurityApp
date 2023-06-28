@@ -9,6 +9,8 @@ public class Usuario {
     public String dni;
     public String correo;
     public String photo;
+    public float baneado;
+    public String rol;
 
     public String getNombre() {
         return nombre;
@@ -48,5 +50,21 @@ public class Usuario {
 
     public void setPhoto(String photo) {
         this.photo = photo;
+    }
+
+    public float getBaneado() {
+        return baneado;
+    }
+
+    public void setBaneado(float baneado) {
+        this.baneado = baneado;
+    }
+
+    public String getRol() {
+        return rol;
+    }
+
+    public void setRol(String rol) {
+        this.rol = rol;
     }
 }

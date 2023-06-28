@@ -48,7 +48,7 @@
                         android:text="Bienvenido a CaxSecurity"
                         android:textAlignment="center"
                         android:textAllCaps="false"
-                        android:textSize="45sp" />
+                        android:textSize="40sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -66,7 +66,7 @@
                         android:fontFamily="@font/robotocondensed_regular"
                         android:padding="10dp"
                         android:text="Inicia Sesión"
-                        android:textSize="28sp" />
+                        android:textSize="24sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -88,7 +88,7 @@
                             android:fontFamily="@font/robotocondensed_regular"
                             android:hint="Correo"
                             android:inputType="textEmailAddress"
-                            android:textSize="20sp" />
+                            android:textSize="18sp" />
                     </com.google.android.material.textfield.TextInputLayout>
 
                 </LinearLayout>
@@ -114,7 +114,7 @@
                             android:hint="Contraseña"
                             android:password="true"
                             android:singleLine="false"
-                            android:textSize="20sp" />
+                            android:textSize="18sp" />
                     </com.google.android.material.textfield.TextInputLayout>
 
                 </LinearLayout>
@@ -134,7 +134,7 @@
                         android:fontFamily="@font/robotocondensed_regular"
                         android:onClick="iniciarSesion"
                         android:text="Iniciar Sesión"
-                        android:textSize="20sp" />
+                        android:textSize="18sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -154,7 +154,7 @@
                         android:textAlignment="viewEnd"
                         android:textAllCaps="false"
                         android:textColor="#757575"
-                        android:textSize="20sp" />
+                        android:textSize="18sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -172,7 +172,7 @@
                         android:onClick="irRegistro"
                         android:text="¿No tienes una cuenta? ¡Registrate!"
                         android:textAlignment="center"
-                        android:textSize="20sp" />
+                        android:textSize="18sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -188,9 +188,9 @@
                         android:layout_weight="1"
                         android:fontFamily="@font/robotocondensed_regular"
                         android:onClick="irRegistro"
-                        android:text="¿Problemas?\nEnvíanos un correo a 'caxsecurity@gmail.com'\nEstaremos gustosos de atenderte"
+                        android:text="¿Problemas?\nEnvíanos un correo a 'caxsec123456@gmail.com'\nEstaremos gustosos de atenderte"
                         android:textAlignment="center"
-                        android:textSize="20sp" />
+                        android:textSize="18sp" />
                 </LinearLayout>
             </LinearLayout>
         </ScrollView>

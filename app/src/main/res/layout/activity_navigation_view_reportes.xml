@@ -23,7 +23,7 @@
         android:layout_height="70dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/container"
+        app:layout_constraintStart_toStartOf="@+id/containerReportes"
         app:menu="@menu/bottom_nav_menu_reporte" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

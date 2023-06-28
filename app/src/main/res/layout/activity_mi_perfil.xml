@@ -45,7 +45,7 @@
                         android:text="Mi perfil"
                         android:textAlignment="center"
                         android:textColor="#000000"
-                        android:textSize="40sp" />
+                        android:textSize="30sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -83,7 +83,7 @@
                             android:backgroundTint="#C32525"
                             android:fontFamily="@font/robotocondensed_regular"
                             android:text="Tomar Foto"
-                            android:textSize="20sp"
+                            android:textSize="16sp"
                             app:icon="@drawable/ic_camera" />
 
                         <Button
@@ -93,7 +93,7 @@
                             android:backgroundTint="#F44336"
                             android:fontFamily="@font/robotocondensed_regular"
                             android:text="Seleccionar Foto"
-                            android:textSize="20sp"
+                            android:textSize="16sp"
                             app:icon="@drawable/ic_add_photo" />
 
                         <Button
@@ -104,7 +104,7 @@
                             android:backgroundTint="#FF9800"
                             android:fontFamily="@font/robotocondensed_regular"
                             android:text="Eliminar foto"
-                            android:textSize="20dp"
+                            android:textSize="16sp"
                             app:icon="@drawable/ic_delete" />
 
                     </LinearLayout>
@@ -127,7 +127,7 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/robotocondensed_regular"
                             android:text="Nombre"
-                            android:textSize="18dp" />
+                            android:textSize="16sp" />
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -142,7 +142,7 @@
                                 android:layout_weight="1"
                                 android:fontFamily="@font/robotocondensed_regular"
                                 android:textColor="#000000"
-                                android:textSize="20dp" />
+                                android:textSize="16sp" />
 
                             <ImageButton
                                 android:id="@+id/btnEditNombreUsuario"
@@ -166,7 +166,7 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/robotocondensed_regular"
                             android:text="DNI"
-                            android:textSize="18dp" />
+                            android:textSize="16sp" />
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -181,7 +181,7 @@
                                 android:layout_weight="1"
                                 android:fontFamily="@font/robotocondensed_regular"
                                 android:textColor="#000000"
-                                android:textSize="20dp" />
+                                android:textSize="16sp" />
 
                             <ImageButton
                                 android:id="@+id/btnEditDNIUsuario"
@@ -205,7 +205,7 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/robotocondensed_regular"
                             android:text="Teléfono"
-                            android:textSize="18dp" />
+                            android:textSize="16sp" />
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -220,7 +220,7 @@
                                 android:layout_weight="1"
                                 android:fontFamily="@font/robotocondensed_regular"
                                 android:textColor="#000000"
-                                android:textSize="20dp" />
+                                android:textSize="16sp" />
 
                             <ImageButton
                                 android:id="@+id/btnEditTelefonoUsuario"
@@ -244,7 +244,7 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/robotocondensed_regular"
                             android:text="Correo"
-                            android:textSize="18dp" />
+                            android:textSize="16sp" />
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -259,7 +259,7 @@
                                 android:layout_weight="1"
                                 android:fontFamily="@font/robotocondensed_regular"
                                 android:textColor="#000000"
-                                android:textSize="20dp" />
+                                android:textSize="16sp" />
                         </LinearLayout>
                     </LinearLayout>
 
@@ -281,7 +281,7 @@
                         android:gravity="center_horizontal|center_vertical"
                         android:onClick="irActualizarContrasena"
                         android:text="Actualizar Contraseña"
-                        android:textSize="20sp" />
+                        android:textSize="16sp" />
 
                 </LinearLayout>
             </LinearLayout>

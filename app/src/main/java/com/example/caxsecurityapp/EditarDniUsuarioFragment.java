@@ -61,21 +61,26 @@ public class EditarDniUsuarioFragment extends DialogFragment {
         btnEditDNI.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Map<String, Object> actualizarNombre = new HashMap<>();
-                actualizarNombre.put("dni", tieDNIEditarUsuario.getText().toString());
-                mRootReference.child("Usuario/"+mAuth.getUid()).updateChildren(actualizarNombre).addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void unused) {
-                        Toast.makeText(getContext(), "DNI de usuario actualizado", Toast.LENGTH_LONG).show();
-                        dismiss();
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(getContext(), "No se pudo actualizar el DNI", Toast.LENGTH_LONG).show();
-                        dismiss();
-                    }
-                });
+                if(tieDNIEditarUsuario.getText().toString().length() == 8){
+                    Map<String, Object> actualizarNombre = new HashMap<>();
+                    actualizarNombre.put("dni", tieDNIEditarUsuario.getText().toString());
+                    mRootReference.child("Usuario/"+mAuth.getUid()).updateChildren(actualizarNombre).addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void unused) {
+                            Toast.makeText(getContext(), "DNI de usuario actualizado", Toast.LENGTH_LONG).show();
+                            dismiss();
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(getContext(), "No se pudo actualizar el DNI", Toast.LENGTH_LONG).show();
+                            dismiss();
+                        }
+                    });
+                }
+                else{
+                    Toast.makeText(getContext(), "El número de DNI debe tener 8 dígitos", Toast.LENGTH_LONG).show();
+                }
             }
         });
     }

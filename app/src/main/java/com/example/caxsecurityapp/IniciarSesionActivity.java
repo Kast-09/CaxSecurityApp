@@ -183,7 +183,7 @@ public class IniciarSesionActivity extends AppCompatActivity {
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if(keyCode==event.KEYCODE_BACK){
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setMessage("¿Desea salir de la aplicación?")
                     .setPositiveButton("Si", new DialogInterface.OnClickListener() {
@@ -201,7 +201,19 @@ public class IniciarSesionActivity extends AppCompatActivity {
                             dialogInterface.dismiss();
                         }
                     });
-            builder.show();
+
+            final AlertDialog dialog = builder.create();
+            dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+                @Override
+                public void onDismiss(DialogInterface dialogInterface) {
+                    if (dialog != null && dialog.isShowing()) {
+                        dialog.dismiss();
+                    }
+                }
+            });
+
+            dialog.show();
+            return true;
         }
         return super.onKeyDown(keyCode, event);
     }

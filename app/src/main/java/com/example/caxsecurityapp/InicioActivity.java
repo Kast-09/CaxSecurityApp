@@ -3,8 +3,10 @@ package com.example.caxsecurityapp;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
@@ -49,7 +51,7 @@ public class InicioActivity extends AppCompatActivity {
     //presionar boton atras
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if(keyCode==event.KEYCODE_BACK){
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setMessage("¿Desea salir de la aplicación?")
                     .setPositiveButton("Si", new DialogInterface.OnClickListener() {
@@ -67,7 +69,19 @@ public class InicioActivity extends AppCompatActivity {
                             dialogInterface.dismiss();
                         }
                     });
-            builder.show();
+
+            final AlertDialog dialog = builder.create();
+            dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+                @Override
+                public void onDismiss(DialogInterface dialogInterface) {
+                    if (dialog != null && dialog.isShowing()) {
+                        dialog.dismiss();
+                    }
+                }
+            });
+
+            dialog.show();
+            return true;
         }
         return super.onKeyDown(keyCode, event);
     }

@@ -1,12 +1,18 @@
 package com.example.caxsecurityapp;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.core.content.res.ResourcesCompat;
 
 import android.Manifest;
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -69,6 +75,14 @@ public class MiPerfilActivity extends AppCompatActivity {
 
     ProgressDialog progressDialog;
 
+    private static final int REQUEST_CAMERA_PERMISSION = 1001;
+    private static final int REQUEST_CODE_PERMISSION = 102;
+    private static final int REQUEST_CODE_SELECT_IMAGE = 1;
+
+    private static final int REQUEST_PERMISSIONS = 4;
+    private static final int REQUEST_GALLERY = 2;
+    private static final int REQUEST_CAMERA = 3;
+
     private FirebaseAuth mAuth;
 
    @Override
@@ -124,33 +138,14 @@ public class MiPerfilActivity extends AppCompatActivity {
        btnTomarFoto.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View view) {
-               if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                   if(checkSelfPermission(Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED){
-                       if(checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED){
-                           abrirCamara();
-                       }
-                       else{
-                           requestPermissions(new String[] {Manifest.permission.WRITE_EXTERNAL_STORAGE}, 101);
-                       }
-                   }
-                   else {
-                       requestPermissions(new String[] {Manifest.permission.CAMERA}, 100);
-                   }
-               }
+               checkCameraPermission();
            }
        });
 
        brnSeleccionarFoto.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View view) {
-               if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                   if(checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED){
-                       uploadPhoto();
-                   }
-                   else {
-                       requestPermissions(new String[] {Manifest.permission.READ_EXTERNAL_STORAGE}, 102);
-                   }
-               }
+               uploadPhoto();
            }
        });
 
@@ -164,9 +159,61 @@ public class MiPerfilActivity extends AppCompatActivity {
        });
     }
 
+    private void checkCameraPermission() {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, REQUEST_CAMERA_PERMISSION);
+        } else {
+            abrirCamara();
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == REQUEST_CAMERA_PERMISSION) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                abrirCamara();
+            } else {
+                Toast.makeText(MiPerfilActivity.this, "No se puede usar la cámara sin los permisos", Toast.LENGTH_LONG).show();
+            }
+        }
+        if (requestCode == REQUEST_PERMISSIONS) {
+            boolean allPermissionsGranted = true;
+            for (int grantResult : grantResults) {
+                if (grantResult != PackageManager.PERMISSION_GRANTED) {
+                    allPermissionsGranted = false;
+                    break;
+                }
+            }
+            if (allPermissionsGranted) {
+                uploadPhoto();
+            } else {
+                Toast.makeText(MiPerfilActivity.this, "No se puede abrir la galería sin los permisos", Toast.LENGTH_LONG).show();
+            }
+        }
+    }
+
+    private ActivityResultLauncher<Intent> cameraLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
+            new ActivityResultCallback<ActivityResult>() {
+                @Override
+                public void onActivityResult(ActivityResult result) {
+                    if (result.getResultCode() == Activity.RESULT_OK) {
+                        Bundle extras = result.getData().getExtras();
+                        Bitmap imageBitmap = (Bitmap) extras.get("data");
+                        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+                        imageBitmap.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
+                        String path = MediaStore.Images.Media.insertImage(getContentResolver(), imageBitmap, "Title", null);
+                        imageUrl = Uri.parse(path);
+                        subirPhoto(imageUrl);
+                    } else if (result.getResultCode() == Activity.RESULT_CANCELED) {
+                        Toast.makeText(MiPerfilActivity.this, "Captura de foto cancelada", Toast.LENGTH_LONG).show();
+                    }
+                }
+            });
+
     public void abrirCamara(){
-        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);//con esto es lo mínimo necesario para abrir la cámara
-        startActivityForResult(intent, 1000);//se le pone cualquier número, sirve como código de respeusta
+        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        cameraLauncher.launch(intent);
     }
 
     public void eliminarFotoFirestore(){
@@ -208,32 +255,25 @@ public class MiPerfilActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    private void uploadPhoto(){
-       Intent i = new Intent(Intent.ACTION_PICK);
-       i.setType("image/*");
-       startActivityForResult(i, COD_SEL_IMAGE);
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        Log.d("image_url", "requestCode - RESULT_OK: "+requestCode+" "+RESULT_OK);
-        if(resultCode == RESULT_OK){
-            if(requestCode == COD_SEL_IMAGE){
-                imageUrl = data.getData();
-                subirPhoto(imageUrl);
+    ActivityResultLauncher<Intent> someActivityResultLauncher = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            result -> {
+                if (result.getResultCode() == Activity.RESULT_OK) {
+                    Intent data = result.getData();
+                    if (data != null) {
+                        Uri imageUrl = data.getData();
+                        if (imageUrl != null) {
+                            subirPhoto(imageUrl);
+                        }
+                    }
+                }
             }
-        }
-        if(requestCode == 1000 && resultCode == RESULT_OK){// el CAMERA_REQUEST es para validar que sea una petición de abrir la cámara y el RESULT_OK es para validar que al abrir la cámara todo salio bien y no hubo errores
-            Bundle extras = data.getExtras();
-            Bitmap imageBitmap = (Bitmap) extras.get("data");
+    );
 
-            ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-            imageBitmap.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
-            String path = MediaStore.Images.Media.insertImage(this.getContentResolver(), imageBitmap, "Title", null);
-            imageUrl = Uri.parse(path);
-            subirPhoto(imageUrl);
-        }
-        super.onActivityResult(requestCode, resultCode, data);
+    private void uploadPhoto(){
+        Intent intent = new Intent(Intent.ACTION_PICK);
+        intent.setType("image/*");
+        someActivityResultLauncher.launch(intent);
     }
 
     private void subirPhoto(Uri imageUrl){
